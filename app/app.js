@@ -1,0 +1,15 @@
+var app = angular.module('chartapp', ['ngRoute']);
+
+
+
+app.config(['$routeProvider', function($routeProvider){
+   var src_dir = "app/views/";
+  //Source directory where all of the html fragments are placed
+  $routeProvider.
+      when('/home', {
+      templateUrl: src_dir +'candlestick.html'
+      }).
+      otherwise({
+        redirectTo: '/home'
+      });
+}]);

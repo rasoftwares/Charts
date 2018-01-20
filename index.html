@@ -1,0 +1,62 @@
+<html ng-app="chartapp">
+  <head>
+  <title>StockChart</title>
+
+<link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="components/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="components/jquery-ui/jquery-ui.theme.min.css">
+<link rel="stylesheet" href="components/css/ui-bootstrap-custom-2.5.0-csp.css">
+<link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
+
+<script src="components/jquery.min.js"></script>
+<script src="components/chart/Chart.min.js"></script>
+<script src="components/chart/d3.min.js"></script>
+<script src="components/chart/hightstocks.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="components/bootstrap/js/bootstrap.min.js"></script>
+<script src="components/underscore-min.js"></script>
+
+<script src="components/jquery-ui/jquery-ui.min.js"></script>
+
+
+<script src="components/angular/angular.min.js"></script>
+<script  src="components/angular/angular-route.min.js"></script>
+
+
+<script src="components/ui-bootstrap/ui-bootstrap-custom-tpls-2.5.0.min.js"></script>
+
+
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/scripts/controllers/candleController.js"></script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default" >
+  		<div class="container-fluid">
+  			<div class="navbar-header">
+           <a class="navbar-brand" href="">STOCK PRICE</i></a>
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+  		<!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+  </div>
+  </div>
+  </nav>
+
+  <div class="container-fluid">
+
+    <div ng-view/>
+
+    </div>
+  </div>
+  </body>
+
+</html>
