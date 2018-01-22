@@ -1,12 +1,19 @@
 app.controller('candleController', function($scope){
 
-
+//var color="red";
+//var upcolor="yellow";
 
 $.getJSON('app/scripts/data/sampledata.json', function (data) {
 
     // create the chart
     Highcharts.stockChart('container', {
 
+    /*  plotOptions: {
+             candlestick: {
+                 color:color,
+                 upColor: upcolor
+             }
+         },*/
 
         rangeSelector: {
             selected: 1
