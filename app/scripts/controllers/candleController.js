@@ -1,28 +1,6 @@
 app.controller('candleController', function($scope,$http){
 
-  $scope.Stocks = [
-    {
-      "code": "500031",
-      "name": "Reliance"
-    },
-    {
-      "code": "500032",
-      "name": "Infosys"
-    },
-    {
-      "code": "500033",
-      "name": "TCS"
-    },
-    {
-      "code": "500034",
-      "name": "PNB"
-    },
-    {
-      "code": "500035",
-      "name": "SBI"
-    }
-  ];
-
+  $scope.Stocks = stock.stockdetails;
 
   $scope.fetchStockDetails = function ($item, $model, $label, $event){
   $scope.StockName = $item.name;
