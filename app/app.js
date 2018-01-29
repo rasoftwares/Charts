@@ -1,4 +1,4 @@
-var app = angular.module('chartapp', ['ngRoute']);
+var app = angular.module('chartapp',  ['ngRoute','ui.bootstrap']);
 
 
 

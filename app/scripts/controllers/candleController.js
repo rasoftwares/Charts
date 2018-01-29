@@ -1,8 +1,72 @@
-app.controller('candleController', function($scope){
+app.controller('candleController', function($scope,$http){
 
-$(function() {
- $.getJSON('app/scripts/data/sampledata.json', function(data) {
+  $scope.Stocks = [
+    {
+      "code": "500031",
+      "name": "Reliance"
+    },
+    {
+      "code": "500032",
+      "name": "Infosys"
+    },
+    {
+      "code": "500033",
+      "name": "TCS"
+    },
+    {
+      "code": "500034",
+      "name": "PNB"
+    },
+    {
+      "code": "500035",
+      "name": "SBI"
+    }
+  ];
 
+
+  $scope.fetchStockDetails = function ($item, $model, $label, $event){
+  $scope.StockName = $item.name;
+  $scope.Stock_Code= $item.code;
+  $scope.prepareChart($item.code);
+  //console.log($item.code);
+  };
+
+
+ $scope.prepareChart = function(data) {
+//console.log(data);
+ $(function() {
+
+  var stockid = data;
+  //console.log(stockid);
+  var Url ="app/scripts/data/" + stockid +".json";
+
+  $.getJSON(Url,function(data) {
+
+
+   var startDate = new Date(data[data.length - 1][0]), // Get year of last data point
+      minRate = 1000,
+      maxRate = 800,
+      startPeriod,
+      date,
+      rate,
+      index;
+
+  startDate.setMonth(startDate.getMonth() - 3); // a quarter of a year before last data point
+  startPeriod = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+
+  for (index = data.length - 1; index >= 0; index = index - 1) {
+      date = data[index][0]; // data[i][0] is date
+      rate = data[index][1]; // data[i][1] is exchange rate
+      if (date < startPeriod) {
+          break; // stop measuring highs and lows
+      }
+      if (rate > maxRate) {
+          maxRate = rate;
+      }
+      if (rate < minRate) {
+          minRate = rate;
+      }
+  }
    // split the data set into ohlc and volume
    var ohlc = [],
      volume = [],
@@ -41,11 +105,9 @@ $(function() {
    $('#container').highcharts('StockChart', {
 
 
+ //vertical line:
+    xAxis: {
 
-
-
-     xAxis: {
-    
        plotLines: [{
            color: '#FF0000',
            width: 2,
@@ -61,24 +123,8 @@ $(function() {
    }],
 
 
-
-   yAxis: {
-       plotLines: [{
-           color: 'red',
-           width: 2,
-           value: 100,
-           label: {
-               text: 'Plot line',
-               align: 'left',
-               x: -10
-           }
-       }]
-   },
-   series: [{
-       data: hdata,
-
-   }],
-       rangeSelector: {
+/*selection box*/
+    rangeSelector: {
          buttons: [
            {
                type: 'day',
@@ -108,10 +154,9 @@ $(function() {
            selected: 4
        },
 
-       title: {
+       /*title: {
            text: 'STOCK PRICE'
-       },
-
+       },*/
             legend: {
                     enabled: true
                 },
@@ -134,7 +179,7 @@ $(function() {
            lineWidth: 2
        }*/],
 
-
+/*charts**/
        series: [{
 
 
@@ -194,4 +239,6 @@ $(function() {
  });
 
 });
+};
+
 });
