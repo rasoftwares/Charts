@@ -20,18 +20,39 @@
 
   $.getJSON(Url, function (data) {
 
-   data = Highcharts.map(data, function (config) {
+    //console.log(data);
+    /*data pint for 5% up value /*/
+    datap = Highcharts.map(data, function (config) {
+
+          return {
+              x: config[0],//date
+              y: config[5], // opening value +5% value value
+          };
+      });
+  /*data pint for 5% low value*/
+    dataL = Highcharts.map(data, function (config) {
+
+            return {
+                x: config[0],//date
+                y: config[6], // opening value -5% value value
+            };
+        });
+
+  //  console.log(datap);
+
+   /*data point for candlestick*/
+    dataC = Highcharts.map(data, function (config) {
          return {
-             x: config[0],
-             open: config[1],
-             high: config[2],
-             low: config[3],
-             close: config[4],
-             color: config[5],
-             y: config[4] // closing value 
-         };
+             x: config[0],//date
+             open: config[1],//open
+             high: config[2],//high
+             low: config[3],//low
+             close: config[4],//close
+             color: config[7]//color
+           };
      });
-    // console.log(data);
+
+     //console.log(data);
      var groupingUnits = [[
        'week',                         // unit name
        [1]                             // allowed multiples
@@ -99,8 +120,8 @@
 
 
                type: 'spline',
-               name: 'SPLINE',
-               data: data,
+               name: 'LowValue', // closing value -5% up value
+               data: dataL,
                dataGrouping: {
              units: groupingUnits
                }
@@ -108,18 +129,18 @@
          {
                type: 'candlestick',
                name: 'CANDLESTICK',
-               data: data,
+               data: dataC,
                dataGrouping: {
              units: groupingUnits
                }
            }, {
              type: 'line',
-             name: 'LINE',
-             data: data,
+             name: "HighValue",// opening value +5% value value
+             data: datap,
              dataGrouping: {
                units: groupingUnits
              }
-           },
+          /* },
            {
              type: 'area',
              name: 'AREA',
