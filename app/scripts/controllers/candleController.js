@@ -1,4 +1,4 @@
-app.controller('candleController', function($scope,$http){
+  app.controller('candleController', function($scope,$http){
 
   $scope.Stocks = stock.stockdetails;
 
@@ -18,205 +18,135 @@ app.controller('candleController', function($scope,$http){
   //console.log(stockid);
   var Url ="app/scripts/data/" + stockid +".json";
 
-  $.getJSON(Url,function(data) {
+  $.getJSON(Url, function (data) {
 
+   data = Highcharts.map(data, function (config) {
+         return {
+             x: config[0],
+             open: config[1],
+             high: config[2],
+             low: config[3],
+             close: config[4],
+             color: config[5],
+             y: config[4] // closing value 
+         };
+     });
+    // console.log(data);
+     var groupingUnits = [[
+       'week',                         // unit name
+       [1]                             // allowed multiples
+     ], [
+       'month',
+       [1, 2, 3, 4, 6]
+     ]];
 
-   var startDate = new Date(data[data.length - 1][0]), // Get year of last data point
-      minRate = 1000,
-      maxRate = 800,
-      startPeriod,
-      date,
-      rate,
-      index;
+     // create the chart
+     var chart = Highcharts.stockChart('container', {
+        /*selection box*/
+        rangeSelector: {
+             /*buttons: [
+               {
+                 type: 'week',
+                 count: 1,
+                 text: '1W'
+             },
+             {
+                 type: 'month',
+                 count: 1,
+                 text: '1M'
+             },
+             {
+                 type: 'year',
+                 count: 1,
+                 text: '1Y'
+             },
 
-  startDate.setMonth(startDate.getMonth() - 3); // a quarter of a year before last data point
-  startPeriod = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-
-  for (index = data.length - 1; index >= 0; index = index - 1) {
-      date = data[index][0]; // data[i][0] is date
-      rate = data[index][1]; // data[i][1] is exchange rate
-      if (date < startPeriod) {
-          break; // stop measuring highs and lows
-      }
-      if (rate > maxRate) {
-          maxRate = rate;
-      }
-      if (rate < minRate) {
-          minRate = rate;
-      }
-  }
-   // split the data set into ohlc and volume
-   var ohlc = [],
-     volume = [],
-     hdata=[],
-     dataLength = data.length;
-
-   for (i = 0; i < dataLength; i++) {
-     ohlc.push([
-       data[i][0], // the date
-       data[i][1], // open
-       data[i][2], // high
-       data[i][3], // low
-       data[i][4] // close
-     ]);
-
-     volume.push([
-       data[i][0], // the date
-       data[i][5] // the volume
-     ]);
-
-     hdata.push([
-     data[i][3], // low
-     ])
-   }
-
-   // set the allowed units for data grouping
-   var groupingUnits = [[
-     'week',                         // unit name
-     [1]                             // allowed multiples
-   ], [
-     'month',
-     [1, 2, 3, 4, 6]
-   ]];
-
-   // create the chart
-   $('#container').highcharts('StockChart', {
-
-
- //vertical line:
-    xAxis: {
-
-       plotLines: [{
-           color: '#FF0000',
-           width: 2,
-           value: Date.UTC(2018, 0, 4),
-           tickInterval: 24 * 3600 * 1000
-
-         }]
-   },
-
-   series: [{
-       data: ohlc,
-        pointStart: Date.UTC(2018, 0, 1)
-   }],
-
-
-/*selection box*/
-    rangeSelector: {
-         buttons: [
-           {
-               type: 'day',
-               count: 1,
-               text: '1D'
-           },{
-             type: 'week',
-             count: 1,
-             text: '1W'
-         },
-         {
-             type: 'month',
-             count: 1,
-             text: '1M'
-         },
-         {
-             type: 'year',
-             count: 1,
-             text: '1Y'
-         },
-
-         {
-             type: 'all',
-             count: 1,
-             text: 'All'
-         }],
-           selected: 4
-       },
-
-       /*title: {
-           text: 'STOCK PRICE'
-       },*/
-            legend: {
-                    enabled: true
-                },
-
-       yAxis: [{
-           title: {
-               text: 'OHLC'
+             {
+                 type: 'all',
+                 count: 1,
+                 text: 'All'
+             }],*/
+               selected: 1
            },
-           height: 200,
-           lineWidth: 2
-       }
 
-        /*{
-           title: {
-               text: 'Volume'
+           /*title: {
+               text: 'STOCK PRICE'
+           },*/
+                legend: {
+                        enabled: true
+                    },
+
+           yAxis: [{
+               title: {
+                   text: 'OHLC'
+               },
+               height: 200,
+               lineWidth: 2
+           }
+
+            /*{
+               title: {
+                   text: 'Volume'
+               },
+               top: 300,
+               height: 100,
+               offset: 0,
+               lineWidth: 2
+           }*/],
+
+      /*charts**/
+           series: [{
+
+
+               type: 'spline',
+               name: 'SPLINE',
+               data: data,
+               dataGrouping: {
+             units: groupingUnits
+               }
            },
-           top: 300,
-           height: 100,
-           offset: 0,
-           lineWidth: 2
-       }*/],
-
-/*charts**/
-       series: [{
-
-
-           type: 'spline',
-           name: 'SPLINE',
-           data: ohlc,
-           dataGrouping: {
-         units: groupingUnits
-           }
-       },
-     {
-           type: 'candlestick',
-           name: 'CANDLESTICK',
-           data: ohlc,
-           dataGrouping: {
-         units: groupingUnits
-           }
-       }, {
-         type: 'line',
-         name: 'LINE',
-         data: ohlc,
-         dataGrouping: {
-           units: groupingUnits
-         }
-       },
-       {
-         type: 'area',
-         name: 'AREA',
-         data: ohlc,
-         dataGrouping: {
-           units: groupingUnits
-         }
-
-            /*   {
-           type: 'column',
-           name: 'Volume',
-           data: volume,
-           yAxis: 1,
-           dataGrouping: {
-         units: groupingUnits
-       }*/
-
-     }],
-
-         plotLines: [{
-             color: 'red',
-             width: 2,
-             value: 100,
-             label: {
-                 text: 'Plot line',
-                 align: 'left',
-                 x: -10
+         {
+               type: 'candlestick',
+               name: 'CANDLESTICK',
+               data: data,
+               dataGrouping: {
+             units: groupingUnits
+               }
+           }, {
+             type: 'line',
+             name: 'LINE',
+             data: data,
+             dataGrouping: {
+               units: groupingUnits
              }
-         }]
+           },
+           {
+             type: 'area',
+             name: 'AREA',
+             data: data,
+             dataGrouping: {
+               units: groupingUnits
+             }
 
-   });
+                /*   {
+               type: 'column',
+               name: 'Volume',
+               data: volume,
+               yAxis: 1,
+               dataGrouping: {
+             units: groupingUnits
+           }*/
+
+         }]
  });
+ });
+
+
+
+
+
+
 
 });
 };
-
-});
+  });
