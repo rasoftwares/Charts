@@ -65,7 +65,12 @@
      var chart = Highcharts.stockChart('container', {
         /*selection box*/
         rangeSelector: {
-             /*buttons: [
+             buttons: [
+               {
+                 type: 'minute',
+                 count: 15,
+                 text: '15M'
+               },
                {
                  type: 'week',
                  count: 1,
@@ -86,7 +91,7 @@
                  type: 'all',
                  count: 1,
                  text: 'All'
-             }],*/
+             }],
                selected: 1
            },
 
