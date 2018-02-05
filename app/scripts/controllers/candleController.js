@@ -18,41 +18,45 @@
   //console.log(stockid);
   var Url ="app/scripts/data/" + stockid +".json";
 
+
   $.getJSON(Url, function (data) {
 
-    //console.log(data);
-    /*data pint for 5% up value /*/
-    datap = Highcharts.map(data, function (config) {
-
-          return {
-              x: config[0],//date
-              y: config[5], // opening value +5% value value
-          };
-      });
-  /*data pint for 5% low value*/
-    dataL = Highcharts.map(data, function (config) {
-
-            return {
-                x: config[0],//date
-                y: config[6], // opening value -5% value value
-            };
-        });
-
+//    console.log(data);
+    var datap = new Array();
+    $.map(data, function(obj, i) {
+    datap.push([obj.x, parseInt(obj.upper)]);
+    });
   //  console.log(datap);
 
-   /*data point for candlestick*/
-    dataC = Highcharts.map(data, function (config) {
+    var dataL = new Array();
+    $.map(data, function(obj, i) {
+    //  console.log(data);
+    dataL.push([obj.x, parseInt(obj.lower)]);
+    });
+  //  console.log(dataL);
+
+     /*data point for candlestick*/
+     var candleData = new Array();
+      $.map(data, function(obj, i) {
+    //  console.log(candleData);
+      candleData.push([obj.x, parseInt(obj.open),parseInt(obj.high),parseInt(obj.low),parseInt(obj.close),(obj.color)]);
+      });
+    //  console.log(candleData);
+
+
+     dataC = Highcharts.map(candleData, function (config) {
+    // console.log(data);
          return {
              x: config[0],//date
              open: config[1],//open
              high: config[2],//high
              low: config[3],//low
              close: config[4],//close
-             color: config[7]//color
+             color: config[5]//color
            };
      });
+  //   console.log(dataC);
 
-     //console.log(data);
      var groupingUnits = [[
        'week',                         // unit name
        [1]                             // allowed multiples
@@ -125,8 +129,8 @@
 
 
                type: 'spline',
-               name: 'LowValue', // closing value -5% up value
-               data: dataL,
+               name: 'UpperValue', // closing value -5% up value
+               data: datap,
                dataGrouping: {
              units: groupingUnits
                }
@@ -140,8 +144,8 @@
                }
            }, {
              type: 'line',
-             name: "HighValue",// opening value +5% value value
-             data: datap,
+             name: "LowValue",// opening value +5% value value
+             data: dataL,
              dataGrouping: {
                units: groupingUnits
              }
@@ -165,6 +169,8 @@
 
          }]
  });
+
+
  });
 
 

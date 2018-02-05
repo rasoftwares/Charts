@@ -6,19 +6,19 @@ var stock ={
       "name": "Reliance"
     },
     {
-      "code": "500032",
+      "code": "532540",
       "name": "Infosys"
     },
     {
-      "code": "500033",
+      "code": "590051",
       "name": "TCS"
     },
     {
-      "code": "500034",
+      "code": "590056",
       "name": "PNB"
     },
     {
-      "code": "500035",
+      "code": "590062",
       "name": "SBI"
     }
   ]
