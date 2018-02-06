@@ -12,7 +12,7 @@
 
  $scope.prepareChart = function(data) {
 //console.log(data);
- $(function() {
+ //$(function() {
 
   var stockid = data;
   //console.log(stockid);
@@ -179,6 +179,6 @@
 
 
 
-});
+//});
 };
   });

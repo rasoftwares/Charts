@@ -1,19 +1,5 @@
 <div class="container" ng-controller="candleController">
-
-<!--  <style>
-      .highcharts-candlestick-series .highcharts-point {
-      stroke: green;
-       fill: red;
-       }
-       .highcharts-candlestick-series .highcharts-point-up {
-        stroke: blue;
-      fill: yellow;
-    }
-     .highcharts-ohlc-series .highcharts-point-hover {
-      stroke-width: 20px;
-    }
-  </style>-->
-    <script type="text/ng-template" id="customPopupTemplate.html">
+<script type="text/ng-template" id="customPopupTemplate.html">
      <div class="custom-popup-wrapper"
         ng-style="{top: position().top+'px', left: position().left+'px'}"
         style="display: block;"
@@ -30,22 +16,40 @@
      </div>
    </script>
 
-   <div class="container-fluid typeahead-demo">
-     <center><h4> Stock Details</h4></center>
-       <input type="text" ng-model="selected" uib-typeahead="Stock as (stock.name + ' ' + stock.code + ' ' ) for stock in Stocks | filter:$viewValue | limitTo:12" class="form-control" autofocus="true" placeholder="Type your Stock Code / Name " typeahead-on-select="fetchStockDetails($item, $model, $label, $event)">
-       <br>
-    <div> <H4> <center>{{StockName}}</center> </H4></div>
-    <div> <H4> <center>{{Stock_Code}}</center> </H4></div>
+
+   <div class="modal-body row">
+     <div class="col-md-6">
+       <div class="container-fluid typeahead-demo">
+        <center><h4> Stock Detail</h4></center>
+          <input type="text" ng-model="selected" uib-typeahead="Stock as (stock.name + ' ' + stock.code + ' ' ) for stock in Stocks | filter:$viewValue | limitTo:12" class="form-control" autofocus="true" placeholder="Type your Stock Code / Name " typeahead-on-select="fetchStockDetails($item, $model, $label, $event)">
+          <br>
+      <!-- <div> <H4> <center>{{StockName}}</center> </H4></div>
+       <div> <H4> <center>{{Stock_Code}}</center> </H4></div>-->
+        <div id="container" style="height: 400px; min-width: 310px"></div>
+
+     </div>
+   </div>
+
+     <div class="col-md-6">
+       <div>
+
+          <table class='table table-bordered' >
+            <div class="container-fluid typeahead-demo">
+             <center><h4> Watch List</h4></center>
+            <tr>
+            <!--th x="C_Code">C_Code</th-->
+            <th>BT</th>
+            <th>ST</th>
+           </tr>
+            <tr ng-repeat="stock in Stocks" >
+             <td><a href="" ng-click="prepareChart(stock.code)">{{stock.name}}</a></td>
+             <td><a href="" ng-click="prepareChart(stock.code)">{{stock.name}}</a></td>
+              </tr>
+          </table>
+        </div>
+      </div>
+
+     </div>
+
+    </div>
   </div>
-
-<div id="container" style="height: 400px; min-width: 310px"></div>
-<!--<button id="line" style="margin-left: 2em">Line</button>
-<button id="spline">Spline</button>
-<button id="area">Area</button>
-<button id="areaspline">Area spline</button>
-<button id="arearange">Arearange</button>
-<button id="columnrange">Column range</button>
-<button id="ohlc">OHLC</button>
-<button id="candlestick">Candlestick</button>-->
-
-</div>
