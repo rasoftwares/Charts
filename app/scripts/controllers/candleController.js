@@ -1,6 +1,69 @@
-  app.controller('candleController', function($scope,$http){
+    app.filter('offset', function() {
+    return function(input, start) {
+    start = parseInt(start, 10);
+    return input.slice(start);
+    };
+    });
+
+
+  app.controller('candleController', function($scope,$http,$filter, $window){
 
   $scope.Stocks = stock.stockdetails;
+
+ //$scope.table;
+  /*start pagination*/
+
+   $scope.itemsPerPage = 10;
+   $scope.currentPage = 0;
+   $scope.items = $scope.Stocks;
+
+   $scope.range = function() {
+     var rangeSize = 1;
+     var ret = [];
+     var start;
+
+     start = $scope.currentPage;
+     if ( start > $scope.pageCount()-rangeSize ) {
+       start = $scope.pageCount()-rangeSize+1;
+     }
+
+     for (var i=start; i<start+rangeSize; i++) {
+       ret.push(i);
+     }
+     return ret;
+    };
+
+   $scope.prevPage = function() {
+     if ($scope.currentPage > 0) {
+       $scope.currentPage--;
+     }
+   };
+
+   $scope.prevPageDisabled = function() {
+     return $scope.currentPage === 0 ? "disabled" : "";
+   };
+
+   $scope.pageCount = function() {
+     return Math.ceil($scope.items.length/$scope.itemsPerPage)-1;
+   };
+
+   $scope.nextPage = function() {
+     if ($scope.currentPage < $scope.pageCount()) {
+       $scope.currentPage++;
+     }
+   };
+
+   $scope.nextPageDisabled = function() {
+     return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
+   };
+
+   $scope.setPage = function(n) {
+     $scope.currentPage = n;
+   };/*end of pagination*/
+
+
+
+ /*fetchStockDetails*/
 
   $scope.fetchStockDetails = function ($item, $model, $label, $event){
   $scope.StockName = $item.name;
@@ -168,17 +231,99 @@
            }*/
 
          }]
- });
-
 
  });
 
 
-
+ });
 
 
 
 
 //});
+};//end of prepareChart dunction
+
+  // console.log($scope.table1);
+
+$scope.createTable = function(data) {
+
+  var stockid = data;
+  var Url ="app/scripts/data/" + stockid +".json";
+
+
+  $.getJSON(Url, function (data) {
+
+    console.log(data);
+
+    var jsondata=data;
+
+    $('#demo').columns({
+    data: jsondata
+  });
+
+  });
+
+
 };
+
+/*$scope.createTable = function(data) {
+//console.log(data);
+//$(function() {
+
+ var stockid = data;
+ //console.log(stockid);
+ var Url ="app/scripts/data/" + stockid +".json";
+
+
+ $.getJSON(Url, function (data) {
+
+   console.log(data);
+
+
+        var listdata = data;
+
+
+        var col = [];
+        for (var i = 0; i < listdata.length; i++) {
+            for (var key in  listdata[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i <  listdata.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML =  listdata[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+
+
+
+});
+};*/
+
   });

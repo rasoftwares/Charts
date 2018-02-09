@@ -9,6 +9,10 @@ app.config(['$routeProvider', function($routeProvider){
       when('/home', {
       templateUrl: src_dir +'candlestick.html'
       }).
+      when('/table', {
+      templateUrl: src_dir +'table.html'
+      }).
+
       otherwise({
         redirectTo: '/home'
       });
