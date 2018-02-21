@@ -113,8 +113,8 @@
 			  	$rootScope.message =  "User " + user.email + " signed out successfully!";
 			  	$rootScope.user = {};
 			  });
-			  console.log(firebaseUser.email);
-			  return firebaseUser;
+			 // console.log(firebaseUser.email);
+			 // return firebaseUser;
 			}, function(error) {
 			  $rootScope.$apply(function () {
 			  	$rootScope.message =  "Something went wrong";
