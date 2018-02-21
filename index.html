@@ -1,5 +1,10 @@
 <html ng-app="chartapp">
+
+
+
+
   <head>
+
   <title>StockChart</title>
 
 <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css">
@@ -7,6 +12,7 @@
 <link rel="stylesheet" href="components/jquery-ui/jquery-ui.theme.min.css">
 <link rel="stylesheet" href="components/datatable/classic.css">
 <link rel="stylesheet" href="components/css/ui-bootstrap-custom-2.5.0-csp.css">
+<link rel="stylesheet" href="components/css/style.css">
 <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
 
 
@@ -23,10 +29,15 @@
 <script src="components/jquery-ui/jquery-ui.min.js"></script>
 
 
+<!-- Include Firebase Library -->
+<script src="components/angular/angularfire/firebase.js"></script>
+<!-- Contacts Store JavaScript -->
 
 
 <script src="components/angular/angular.min.js"></script>
 <script  src="components/angular/angular-route.min.js"></script>
+<script src="components/angular/angularfire/angularfire.min.js"></script>
+
 
 
 
@@ -37,35 +48,44 @@
 <script type="text/javascript" src="app/scripts/data/stockNames.js"></script>
 
 <script type="text/javascript" src="app/scripts/controllers/candleController.js"></script>
+<script type="text/javascript" src="app/scripts/controllers/dataController.js"></script>
+
+<script type="text/javascript" src="app/scripts/controllers/loginController.js"></script>
+
+
+
+
+
+
 
 </head>
 
 <body>
-  <nav class="navbar navbar-default" >
-  		<div class="container-fluid">
-  			<div class="navbar-header">
-           <a class="navbar-brand" href="">STOCK PRICE</i></a>
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
+  <header ng-controller="loginController">
+		<nav class="cf" ng-include="'app/views/nav.html'"></nav>
+	</header>
 
-  		<!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-  </div>
-  </div>
-  </nav>
 
   <div class="container-fluid">
 
-    <div ng-view/>
+    <div class="cf" ng-view/>
 
     </div>
   </div>
   </body>
 
 </html>
+
+<script>
+  var config = {
+      apiKey: "AIzaSyBZ1cvBwDlgexMGyXV7QlAAQMl_uzze_2I",
+      authDomain: "stocks-3dbe3.firebaseapp.com",
+      databaseURL: "https://stocks-3dbe3.firebaseio.com",
+      projectId: "stocks-3dbe3",
+      storageBucket: "stocks-3dbe3.appspot.com",
+      messagingSenderId: "219531523483"
+    };
+firebase.initializeApp(config);
+ // Get a reference to the database service
+var database = firebase.database();
+</script>

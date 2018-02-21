@@ -21,6 +21,7 @@
 .pagination-mini ul>li>a,.pagination-mini ul>li>span{padding:0 6px;font-size:10.5px;}
 
 
+
 .modal-box {
   display: none;
   position: absolute;
@@ -103,6 +104,7 @@ a.close:hover {
    </script>
 
 
+
    <div class="modal-body row">
      <div class="col-md-8">
        <div class="container-fluid typeahead-demo">
@@ -114,8 +116,8 @@ a.close:hover {
     <!--   <div>
        <a    ng-click="createTable(Stock_Code)" >{{Stock_Code}}</a>
      </div>-->
-      <a class="js-open-modal" href="#" data-modal-id="popup" data-toggle="tooltip" title="Click to Table View">{{stockid}}</a>
-
+    <h4> <a class="js-open-modal" href="#" data-modal-id="popup" style="color:green;" data-toggle="tooltip" title="Click to Table View">{{stockid}}</a></h4>
+    <!-- <a  href="#/table"  data-toggle="tooltip" ng-click="createTable(stockid)" title="Click to Table View">{{stockid}}</a>-->
 
        <div class="chart-outer">
         <div id="container" style="height: 400px; min-width: 310px"></div>
@@ -127,7 +129,7 @@ a.close:hover {
 
      <div class="col-md-4">
        <div>
-          <table class="table table-striped table-bordered">
+          <table class="table table-striped table-bordered" >
             <div class="container-fluid typeahead-demo">
              <center><h4> Watch List</h4></center>
              <thead>
@@ -137,10 +139,10 @@ a.close:hover {
           </tr></thead>
           <tbody>
              <tr ng-repeat="item in items | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
-             <td><a href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
-             <td><a href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
-           </tr></tbody>
-           <tfoot>
+             <td bgcolor="{{item.color}}" ><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
+             <td bgcolor="{{item.color}}"><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
+             </tr></tbody>
+          <tfoot>
        <td colspan="3">
          <div class="pagination">
            <ul>
@@ -162,7 +164,7 @@ a.close:hover {
       </div>
      </div>
 
-    </div>
+   </div>
 
     <div id="popup" class="modal-box">
    <header>
@@ -170,10 +172,53 @@ a.close:hover {
     <h3>Stock Details</h3>
    </header>
    <div class="modal-body">
-    <div id="demo"></div>
+  <div id="demo"></div>
+<!--   <table class="table table-striped table-bordered">
+      <div class="container-fluid typeahead-demo">
+       <center><h4> Watch List</h4></center>
+       <thead>
+      <tr>
+      <th>date</th>
+      <th>open</th>
+      <th>high</th>
+      <th>low</th>
+      <th>close</th>
+      <th>upper</th>
+      <th>lower</th>
+    </tr></thead>
+    <tbody>
+       <tr ng-repeat="item in stockdata">
+       <td>{{item.x}}</td>
+        <td>{{item.open}}</td>
+          <td>{{item.high}}</td>
+            <td>{{item.low}}</td>
+              <td>{{item.close}}</td>
+              <td>{{item.upper}}</td>
+              <td>{{item.lower}}</td>
+       <td bgcolor="{{item.color}}">{{item.color}}</td>
+       </tr></tbody>
+     <tfoot>
+ <td colspan="3">
+   <div class="pagination">
+     <ul>
+       <li ng-class="prevPageDisabled()">
+         <a href ng-click="prevPage()">« Prev</a>
+       </li>
+       <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+         <a href="">{{n+1}}</a>
+       </li>
+       <li ng-class="nextPageDisabled()">
+         <a href ng-click="nextPage()">Next »</a>
+       </li>
+     </ul>
+   </div>
+ </td>
+</tfoot>
+     </div>
+   </table>-->
   </div>
   <footer>
-   <a href="#/" class="js-modal-close">Close Button</a>
+   <a href="#/home" class="js-modal-close">Close Button</a>
   </footer>
 </div>
 

@@ -1,21 +1,38 @@
-    app.filter('offset', function() {
+
+
+app.filter('offset', function()  {
     return function(input, start) {
-    start = parseInt(start, 10);
-    return input.slice(start);
-    };
-    });
+        if (!input || !input.length) { return; }
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+});
 
 
-  app.controller('candleController', function($scope,$http,$filter, $window){
 
-  $scope.Stocks = stock.stockdetails;
+
+ app.controller('candleController', function($scope,$http,$filter,$window){
+
+      $scope.Stocks="";
+
+     var Url ="https://stocks-3dbe3.firebaseio.com/BT.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
+
+
+    $.get(Url, function (data) {
+
+    $scope.Stocks = data;
+    //console.log($scope.Stocks);
+
+  //   console.log(data);
+    // $scope.Stocks = data;
+  //   console.log($scope.Stocks);
 
  //$scope.table;
   /*start pagination*/
 
-   $scope.itemsPerPage = 10;
+   $scope.itemsPerPage = 2;
    $scope.currentPage = 0;
-   $scope.items = $scope.Stocks;
+   $scope.items =  $scope.Stocks;
 
    $scope.range = function() {
      var rangeSize = 1;
@@ -61,7 +78,7 @@
      $scope.currentPage = n;
    };/*end of pagination*/
 
-
+});
 
  /*fetchStockDetails*/
 
@@ -73,18 +90,25 @@
   };
 
 
- $scope.prepareChart = function(data) {
+
+
+  $scope.prepareChart = function(stockid) {
 //console.log(data);
  //$(function() {
-
- $scope.stockid = data;
+  $scope.stockid = stockid;
   console.log($scope.stockid);
+
   var Url ="app/scripts/data/" + $scope.stockid +".json";
 
 
   $.getJSON(Url, function (data) {
 
-//    console.log(data);
+
+   $scope.stockdata=data;
+   console.log( $scope.stockdata);
+
+
+
     var datap = new Array();
     $.map(data, function(obj, i) {
     datap.push([obj.x, parseInt(obj.upper)]);
@@ -232,13 +256,21 @@
 
          }]
 
- });
+ } ,
+ function (chart) {
+
+            // apply the date pickers
+            setTimeout(function () {
+                $('input.highcharts-range-selector').datepicker();
+            }, 0);
+        });
+//);
 
 
-     $('#demo').columns({
+
+   $('#demo').columns({
      data: data
    });
-
 
 
  });
