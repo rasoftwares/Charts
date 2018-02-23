@@ -13,26 +13,36 @@ app.filter('offset', function()  {
 
  app.controller('candleController', function($scope,$http,$filter,$window){
 
-      $scope.Stocks="";
+  /*combo box value*/
+ $scope.values = ['1.5','2','2.5','3','3.5','4','4.5','5'];
+ $scope.selectedNumber = $scope.values[0];
+ /*$scope.add=function(){
+ var nums=$scope.numbers.length+1;
+ $scope.numbers.push(nums++);
+}*/ //end combo box
 
-     var Url ="https://stocks-3dbe3.firebaseio.com/BT.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
 
+   $scope.Stocks = stock.stockdetails;
+
+   $scope.Stockdata="";
+
+   var Url ="https://stocks-3dbe3.firebaseio.com/BT.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
 
     $.get(Url, function (data) {
 
-    $scope.Stocks = data;
+    $scope.Stockdata = data;
     //console.log($scope.Stocks);
 
   //   console.log(data);
     // $scope.Stocks = data;
-  //   console.log($scope.Stocks);
+    console.log($scope.Stockdata);
 
  //$scope.table;
   /*start pagination*/
 
    $scope.itemsPerPage = 2;
    $scope.currentPage = 0;
-   $scope.items =  $scope.Stocks;
+   $scope.items = $scope.Stockdata;
 
    $scope.range = function() {
      var rangeSize = 1;
@@ -268,9 +278,9 @@ app.filter('offset', function()  {
 
 
 
-   $('#demo').columns({
+   $('#demo').columns({   /*popup view */
      data: data
-   });
+   }); /*end popup*/
 
 
  });
@@ -313,7 +323,7 @@ $(window).resize(function() {
 
 $(window).resize();
 
-});
+}); //end of popup function
 
 
   // console.log($scope.table1);

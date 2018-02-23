@@ -116,10 +116,13 @@ a.close:hover {
     <!--   <div>
        <a    ng-click="createTable(Stock_Code)" >{{Stock_Code}}</a>
      </div>-->
+       <h4><select ng-model='selectedNumber'  ng-options='value for value in values'></select></h4>
     <h4> <a class="js-open-modal" href="#" data-modal-id="popup" style="color:green;" data-toggle="tooltip" title="Click to Table View">{{stockid}}</a></h4>
+
     <!-- <a  href="#/table"  data-toggle="tooltip" ng-click="createTable(stockid)" title="Click to Table View">{{stockid}}</a>-->
 
        <div class="chart-outer">
+
         <div id="container" style="height: 400px; min-width: 310px"></div>
       </div>
     </div>
