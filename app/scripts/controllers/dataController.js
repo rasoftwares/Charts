@@ -9,6 +9,8 @@
 
 
 	return {
+
+
 		login: function(user) {
 			firebase.auth().signInWithEmailAndPassword(user.email, user.password)
 		  	.then(function(firebaseUser){

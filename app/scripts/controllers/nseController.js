@@ -11,7 +11,7 @@ app.filter('offset', function()  {
 
 
 
- app.controller('candleController', function($scope,$http,$filter,$window){
+ app.controller('nseController', function($scope,$http,$filter,$window){
 
   /*combo box value*/
  $scope.values = ['1.5','2','2.5','3','3.5','4','4.5','5'];
@@ -22,27 +22,27 @@ app.filter('offset', function()  {
 }*/ //end combo box
 
 
-   $scope.Stocks = Stock.stockdetails;
+   $scope.nseStocks = nsestock.stockdetails;
 
-   $scope.Stockdata="";
+   $scope.nseStockdata="";
 
-   var Url ="https://stocks-3dbe3.firebaseio.com/BT.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
+   var Url ="https://stocks-3dbe3.firebaseio.com/nse/BT.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
 
     $.get(Url, function (data) {
 
-    $scope.Stockdata = data;
+    $scope.nseStockdata = data;
     //console.log($scope.Stocks);
 
   //   console.log(data);
     // $scope.Stocks = data;
-    console.log($scope.Stockdata);
+    console.log($scope.nseStockdata);
 
  //$scope.table;
   /*start pagination*/
 
    $scope.itemsPerPage = 10;
    $scope.currentPage = 0;
-   $scope.items = $scope.Stockdata;
+   $scope.items =$scope.nseStockdata;
 
    $scope.range = function() {
      var rangeSize = 1;
@@ -95,7 +95,7 @@ app.filter('offset', function()  {
   $scope.fetchStockDetails = function ($item, $model, $label, $event){
   $scope.StockName = $item.name;
   $scope.Stock_Code= $item.code;
-  $scope.prepareChart($item.code);
+  $scope.prepareChart($item.nse_code);
   //console.log($item.code);
   };
 
@@ -108,8 +108,8 @@ app.filter('offset', function()  {
    $scope.stockid = stockid;
    console.log($scope.stockid);
 
-   var Url ="app/scripts/data/bse/" + $scope.stockid +".json";
-   //var FuUrl ="app/scripts/data/" + $scope.stockid +"_fu.json";
+   var Url ="app/scripts/data/nse/" + $scope.stockid +".json";
+   var FuUrl ="app/scripts/data/nse/" + $scope.stockid +"_fu.json";
 
 
 
@@ -173,7 +173,7 @@ app.filter('offset', function()  {
      ]];
 
      // create the chart
-     var chart = Highcharts.stockChart('container', {
+     var chart = Highcharts.stockChart('container2', {
         /*selection box*/
         rangeSelector: {
              buttons: [
@@ -302,7 +302,7 @@ app.filter('offset', function()  {
 
 
 
- /*----------------------futurechart
+ /*----------------------futurechart---*/
 
  $.getJSON(FuUrl, function (data) {
 
@@ -318,7 +318,114 @@ app.filter('offset', function()  {
   console.log(dataF);*/
 
 
+   var dataF= new Array();
+   $.map(data, function(obj, i) {
+   dataF.push([obj.date, parseInt(obj.ltp),parseInt(obj.vol)]);
+   });
+  console.log(dataF);
 
+  var dataV= new Array();
+  $.map(data, function(obj, i) {
+  dataV.push([obj.date,parseInt(obj.vol)]);
+  });
+ console.log(dataV);
+
+
+    var groupingUnits = [[
+      'week',                         // unit name
+      [1]                             // allowed multiples
+    ], [
+      'month',
+      [1, 2, 3, 4, 6]
+    ]];
+
+    // create the chart
+
+     Highcharts.stockChart('container3', {
+       /*selection box*/
+       rangeSelector: {
+         buttons: [{
+                   type: 'hour',
+                   count: 1,
+                   text: '1h'
+               },{
+                   type: 'minute',
+                   count: 15,
+                   text: '15m'
+               },
+               {
+                   type: 'day',
+                   count: 1,
+                   text: '1D'
+               }, {
+                   type: 'all',
+                   count: 1,
+                   text: 'All'
+               }],
+               selected: 1,
+               inputEnabled: true
+           },
+
+           xAxis: {
+       type: 'datetime',
+
+   },
+
+
+          yAxis: [{
+              title: {
+                  text: 'value'
+              },
+              height: 200,
+              lineWidth: 2
+          },
+
+           {
+              title: {
+                  text: 'Volume'
+              },
+              top: 300,
+              height: 100,
+              offset: 0,
+              lineWidth: 2
+          }],
+          /*title: {
+              text: 'STOCK PRICE'
+          },*/
+            /*   legend: {
+                       enabled: true
+                   },
+     /*charts**/
+          series: [
+       {
+            type: 'spline',
+            name: "minute",// opening value +5% value value
+            data: dataF,
+            threshold: 1,
+               valueDecimals: 0
+
+
+          },
+
+ {
+              type: 'column',
+              name: 'Volume',
+              data: dataV,
+              yAxis: 1
+
+
+        }]
+
+} ,
+function (chart) {
+
+           // apply the date pickers
+           setTimeout(function () {
+               $('input.highcharts-range-selector').datepicker();
+           }, 0);
+       });
+
+   });
 
 
 

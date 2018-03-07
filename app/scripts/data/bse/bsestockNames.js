@@ -1,4 +1,4 @@
-var stock ={
+var Stock ={
 
 "stockdetails": [
     {
