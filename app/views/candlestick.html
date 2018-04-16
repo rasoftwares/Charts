@@ -18,16 +18,8 @@
 .pagination-mini ul>li:first-child>a,.pagination-small ul>li:first-child>a,.pagination-mini ul>li:first-child>span,.pagination-small ul>li:first-child>span{-webkit-border-top-left-radius:3px;-moz-border-radius-topleft:3px;border-top-left-radius:3px;-webkit-border-bottom-left-radius:3px;-moz-border-radius-bottomleft:3px;border-bottom-left-radius:3px;}
 .pagination-mini ul>li:last-child>a,.pagination-small ul>li:last-child>a,.pagination-mini ul>li:last-child>span,.pagination-small ul>li:last-child>span{-webkit-border-top-right-radius:3px;-moz-border-radius-topright:3px;border-top-right-radius:3px;-webkit-border-bottom-right-radius:3px;-moz-border-radius-bottomright:3px;border-bottom-right-radius:3px;}
 .pagination-small ul>li>a,.pagination-small ul>li>span{padding:2px 10px;font-size:11.9px;}
-.pagination-mini ul>li>a,.pagination-mini ul>li>span{padding:0 6px;font-size:10.5px;}\
+.pagination-mini ul>li>a,.pagination-mini ul>li>span{padding:0 6px;font-size:10.5px;}
 
-#accordion_nse .ui-accordion-header {
-line-height: 10px;   /*Header Box height*/
-font-size: 13px;     /*Header Text size*/
-}
-#accordion .ui-accordion-header {
-line-height: 15px;
-font-size: 18px;
-}
 
 
 
@@ -181,9 +173,11 @@ a.close:hover {
        </div></h4>-->
 
 <h4><div>
+    <input type="radio" name="stock" value="4" />FUTURES
+      <input type="radio" name="stock" value="3" />NSE
      <input type="radio" name="stock" checked="checked" value="1" />BSE
 
-    <input type="radio" name="stock" value="3" />NSE</div></h4>
+    </div></h4>
 <!--end of radio button--------->
 
 <!--bse div--------->
@@ -218,56 +212,21 @@ a.close:hover {
 
      <div class="col-md-4">
          <h4>Watch List</h4>
-    <div id="accordion">
-  <h1>BT/ST Details</h1>
-       <div>
-          <table class="table table-striped table-bordered" id="table" >
-            <div class="container-fluid typeahead-demo">
-             <center><h4> Watch List</h4></center>
-             <thead>
-            <tr>
-            <th>BT</th>
-            <th>ST</th>
-          </tr></thead>
-          <tbody>
-             <tr ng-repeat="item in items | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
-             <td bgcolor="{{item.color}}" ><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
-             <td bgcolor="{{item.color}}"><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
-             </tr></tbody>
-          <tfoot>
-       <td colspan="3">
-         <div class="pagination">
-           <ul>
-             <li ng-class="prevPageDisabled()">
-               <a href ng-click="prevPage()">« Prev</a>
-             </li>
-             <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
-               <a href="">{{n+1}}</a>
-             </li>
-             <li ng-class="nextPageDisabled()">
-               <a href ng-click="nextPage()">Next »</a>
-             </li>
-           </ul>
-         </div>
-       </td>
-     </tfoot>
-           </div>
-          </table>
-      </div>
+    <div  id="accordion">
       <h1>Peer Details</h1>
              <div>
-              <table class="table table-striped table-bordered" id="table1" >
+            <!--  <table class="table table-striped table-bordered" id="table1" >
                 <div class="container-fluid typeahead-demo">
-                 <center><h4> Watch List</h4></center>
+                 <center><h4> Peers List</h4></center>
                  <thead>
                 <tr>
-                <th>BT</th>
-                <th>ST</th>
+                <th>CODE</th>
+                <th>NAME</th>
               </tr></thead>
               <tbody>
                  <tr ng-repeat="item in items | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
-                 <td bgcolor="{{item.color}}" ><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
-                 <td bgcolor="{{item.color}}"><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
+                 <td bgcolor="{{item.color}}">{{item.symbol}}</a></td>
+                 <td bgcolor="{{item.color}}">{{item.name}}</a></td>
                  </tr></tbody>
               <tfoot>
            <td colspan="3">
@@ -287,8 +246,44 @@ a.close:hover {
            </td>
          </tfoot>
                </div>
-              </table>
+             </table>-->
           </div>
+
+          <h1>BT/ST Details</h1>
+               <div>
+                  <table class="table table-striped table-bordered" id="table" >
+                    <div class="container-fluid typeahead-demo">
+                     <center><h4> Watch List</h4></center>
+                     <thead>
+                    <tr>
+                    <th>BT</th>
+                    <th>ST</th>
+                  </tr></thead>
+                  <tbody>
+                     <tr ng-repeat="item in items | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+                     <td bgcolor="{{item.color}}" ><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
+                     <td bgcolor="{{item.color}}"><a style="color:black;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
+                     </tr></tbody>
+                  <tfoot>
+               <td colspan="3">
+                 <div class="pagination">
+                   <ul>
+                     <li ng-class="prevPageDisabled()">
+                       <a href ng-click="prevPage()">« Prev</a>
+                     </li>
+                     <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                       <a href="">{{n+1}}</a>
+                     </li>
+                     <li ng-class="nextPageDisabled()">
+                       <a href ng-click="nextPage()">Next »</a>
+                     </li>
+                   </ul>
+                 </div>
+               </td>
+             </tfoot>
+                   </div>
+                  </table>
+              </div>
      </div>
 
  </div> <!--col4>-->
@@ -330,7 +325,42 @@ a.close:hover {
 
     <div class="col-md-4">
    <div id="accordion_nse">
- <h1>BT/ST Details</h1>
+     <h3>Peer Details</h3>
+            <div>
+             <table class="table table-striped table-bordered" id="table1" >
+               <div class="container-fluid typeahead-demo">
+                <center><h4>Peers List</h4></center>
+                <thead>
+               <tr>
+               <th>CODE</th>
+               <th>NAME</th> </tr></thead>
+             <tbody>
+                <tr ng-repeat="item in peersdata">
+                <td bgcolor="{{item.color}}" ><a style="color:black;" href="" ng-click="prepareChart(item.symbol)">{{item.symbol}}</a></td>
+                <td bgcolor="{{item.color}}"><a style="color:black;" href="" ng-click="prepareChart(item.symbol)">{{item.name}}</a></td>
+                </tr></tbody>
+             <tfoot>
+          <td colspan="3">
+            <div class="pagination">
+              <ul>
+                <li ng-class="prevPageDisabled()">
+                  <a href ng-click="prevPage()">« Prev</a>
+                </li>
+                <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                  <a href="">{{n+1}}</a>
+                </li>
+                <li ng-class="nextPageDisabled()">
+                  <a href ng-click="nextPage()">Next »</a>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tfoot>
+              </div>
+             </table>
+         </div>
+
+    <h3>BT/ST Details</h3>
       <div>
          <table class="table table-striped table-bordered" id="table" >
            <div class="container-fluid typeahead-demo">
@@ -365,41 +395,7 @@ a.close:hover {
           </div>
          </table>
      </div>
-     <h1>Peer Details</h1>
-            <div>
-             <table class="table table-striped table-bordered" id="table1" >
-               <div class="container-fluid typeahead-demo">
-                <center><h4> Watch List</h4></center>
-                <thead>
-               <tr>
-               <th>BT</th>
-               <th>ST</th>
-             </tr></thead>
-             <tbody>
-                <tr ng-repeat="item in items | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
-                <td bgcolor="{{item.color}}" ><a style="color:black;" href="" ng-click="prepareChart(item.nse_code)">{{item.nse_name}}</a></td>
-                <td bgcolor="{{item.color}}"><a style="color:black;" href="" ng-click="prepareChart(item.nse_code)">{{item.nse_name}}</a></td>
-                </tr></tbody>
-             <tfoot>
-          <td colspan="3">
-            <div class="pagination">
-              <ul>
-                <li ng-class="prevPageDisabled()">
-                  <a href ng-click="prevPage()">« Prev</a>
-                </li>
-                <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
-                  <a href="">{{n+1}}</a>
-                </li>
-                <li ng-class="nextPageDisabled()">
-                  <a href ng-click="nextPage()">Next »</a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tfoot>
-              </div>
-             </table>
-         </div>
+
     </div>
 
 </div> <!--col4>-->
@@ -407,6 +403,12 @@ a.close:hover {
 </div>
 </div>
  <!--end of nse div--------->
+
+
+  <div id="Stock4" class="desc"  style="display: none;" ng-controller="candleController">
+
+  <h1><p></p></h1>
+  </div>
 
 </div>
 
@@ -428,22 +430,23 @@ $(document).ready(function(){
     });
 });*/
 
+
+
 $( "#accordion").accordion({
   heightStyle: "fill-content",
   collapsible: true,
       active: true
    });
 
-$( "#accordion_nse").accordion({
-  heightStyle: "fill-content",
-  collapsible: true,
-      active: true
-      });
+   $( "#accordion_nse").accordion({
+     heightStyle: "fill-content",
+     collapsible: true,
+         active: true
+       });
 
-    $(document).ready(function() {
+      $(document).ready(function() {
     $("input[name$='stock']").click(function() {
         var test = $(this).val();
-
         $("div.desc").hide();
         $("#Stock" + test).show();
     });

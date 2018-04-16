@@ -6,8 +6,8 @@ var nsestock ={
       "nse_name": "ACC PVT"
     },
     {
-      "nse_code": "TATA",
-      "nse_name": "TATAPOWER"
+      "nse_code": "TATACOMM",
+      "nse_name": "Tata Communications Limited"
     }
 
   ]

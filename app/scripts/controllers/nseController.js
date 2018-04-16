@@ -11,6 +11,9 @@ app.filter('offset', function()  {
 
 
 
+
+
+
  app.controller('nseController', function($scope,$http,$filter,$window){
 
   /*combo box value*/
@@ -20,7 +23,7 @@ app.filter('offset', function()  {
  var nums=$scope.numbers.length+1;
  $scope.numbers.push(nums++);
 }*/ //end combo box
-
+  $scope.peersdata="";
 
    $scope.nseStocks = nsestock.stockdetails;
 
@@ -108,12 +111,16 @@ app.filter('offset', function()  {
    $scope.stockid = stockid;
    console.log($scope.stockid);
 
+
    var Url ="app/scripts/data/nse/" + $scope.stockid +".json";
    var FuUrl ="app/scripts/data/nse/" + $scope.stockid +"_fu.json";
+   var PUrl ="app/scripts/data/nse/peers/" + $scope.stockid +"_peers.json";
 
+   $.getJSON(PUrl, function (data) {
+      $scope.peersdata=data;
+  
 
-
-
+});
 
   $.getJSON(Url, function (data) {
 
@@ -429,8 +436,15 @@ function (chart) {
 
 
 
+
+
+
+
 //});
 };//end of prepareChart dunction
+
+
+
 
 
 /*popup function*/
