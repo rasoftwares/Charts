@@ -67,7 +67,9 @@ return {
     			  var userlast = snapshot.val().lastname;
                   var useremail = snapshot.val().email;
                   var timestamp = snapshot.val().date;
+                  var btlist =snapshot.val().bt;
     			  console.log(userfirst + " " + userlast);
+            console.log("--------->"+btlist);
     			         $rootScope.$apply(function () {
     		  		                      $rootScope.user = {
                                             date: new Date(timestamp).getDate() + "/" + (new Date(timestamp).getMonth()+1) + "/" + new Date(timestamp).getFullYear(),
@@ -86,8 +88,17 @@ return {
                 // });
             }
         });
+
+
+
     } // evento
 }; // return
 
+
+/*  firebase.database().ref('users/'+firebaseUser.uid+'/bt').on('child_added', snapshot => {
+    firebase.database().ref('bt/'+snapshot.key).on('value', snap => {
+      console.log(snap.val().code); //Print name of persons in contact list
+    });
+  });*/
 
 }]); // factory*/
