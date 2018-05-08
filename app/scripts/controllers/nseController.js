@@ -4,15 +4,7 @@
   /*combo box value*/
  $scope.values = ['1.5','2','2.5','3','3.5','4','4.5','5'];
  $scope.selectedNumber = $scope.values[0];
- /*$scope.add=function(){
- var nums=$scope.numbers.length+1;
- $scope.numbers.push(nums++);
-}*/ //end combo box
  $scope.nseStocks = nsestock.stockdetails;
-//  $scope.peersdata="";
-
-//  $scope.nseStockdata="";
-  $scope.peersdata="";
  var Url ="https://stocks-3dbe3.firebaseio.com/users/wDI3FssWkwOuLNYE05rv3fBRpp92/bt.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
  //var Url ="https://stocks-3dbe3.firebaseio.com/users/" + firebaseUser.uid+ "/bt.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
     $.get(Url, function (data) {
@@ -23,9 +15,7 @@
   //   $scope.items =$scope.nseStockdata;
      $scope.items =  $scope.nseStockdata;
      console.log($scope.items);
-
-
-    $scope.range = function() {
+     $scope.range = function() {
       var rangeSize = 1;
       var ret = [];
       var start;
@@ -87,7 +77,7 @@
   $scope.fetchStockDetails = function ($item, $model, $label, $event){
   $scope.StockName = $item.name;
   $scope.Stock_Code= $item.code;
-  $scope.prepareChart($item.code);
+  $scope.prepareChart($item.code,$item.name);
   //console.log($item.code);
   };
 
@@ -107,19 +97,13 @@
 
 
   $.getJSON(Url, function (data) {
-
-
-
-
    $scope.stockdata=data;
    console.log( $scope.stockdata);
-
   /* var dataF = new Array();
    $.map(data, function(obj, i) {
    dataF.push([obj.fudate, parseInt(obj.trs)]);
    });
    console.log(dataF);*/
-
 
     var datap = new Array();
     $.map(data, function(obj, i) {
@@ -292,12 +276,9 @@
 
 
 
-
-
-
-
    $('#demo').columns({   /*popup view table view data*/
      data: data
+
    }); /*end popup*/
 
 
@@ -308,7 +289,6 @@
  /*----------------------futurechart---*/
 
  $.getJSON(FuUrl, function (data) {
-
 
    $scope.stockdata=data;
   console.log( $scope.stockdata);
@@ -436,14 +416,24 @@ function (chart) {
    });
 
 
-   $.getJSON(PUrl, function (data) {
+   /*$.getJSON(PUrl, function (data) {
      console.log(data);
-      $scope.peersdata= data;
+      $scope.peersdata= data;*/
+
+  $http.get(PUrl).
+    success(function(data, status, headers, config) {
+      $scope.peersdata = data;
+      console.log($scope.peersdata);
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
 
 
 
 
-});
+
+//});
 
 
 
@@ -683,9 +673,14 @@ $(window).resize();
            },
 
 
-           /*title: {
-               text: 'STOCK PRICE'
-           },*/
+           title: {
+               text: 'ACC',
+                 align: 'left',
+               style: {
+           color: 'green',
+           fontWeight: 'bold'
+       }
+           },
                 legend: {
                         enabled: true
                     },
@@ -763,14 +758,6 @@ $(window).resize();
                 $('input.highcharts-range-selector').datepicker();
             }, 0);
         });
-
-
-
-
-
-
-
-
 
  });
 
@@ -902,21 +889,20 @@ function (chart) {
 
    });
 
+   $http.get(PUrl1).
+     success(function(data, status, headers, config) {
+       $scope.peersdata = data;
+       console.log($scope.peersdata);
+     }).
+     error(function(data, status, headers, config) {
+       // log error
+     });
 
-   $.getJSON(PUrl1, function (data) {
+/*   $.getJSON(PUrl1, function (data) {
      console.log(data);
       $scope.peersdata=data;
+});*/
 
 
-
-
-
-});
-
-
-$( function() {
-    $( "#accordion" ).accordion();
-
-  } );
 
 });
