@@ -7,6 +7,8 @@
  $scope.nseStocks = nsestock.stockdetails;
  var Url ="https://stocks-3dbe3.firebaseio.com/users/wDI3FssWkwOuLNYE05rv3fBRpp92/bt.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
  //var Url ="https://stocks-3dbe3.firebaseio.com/users/" + firebaseUser.uid+ "/bt.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
+
+
     $.get(Url, function (data) {
 
     $scope.nseStockdata = data;
@@ -647,17 +649,20 @@ $(window).resize();
                type: 'day',
                count: 1,
                text: '1D'
-           },
-           {
+            },
+
+             {
              type: 'week',
              count: 1,
              text: '1W'
-         },
+             },
+
              {
                  type: 'month',
                  count: 1,
                  text: '1M'
              },
+
              {
                  type: 'year',
                  count: 1,
@@ -669,7 +674,7 @@ $(window).resize();
                  count: 1,
                  text: 'All'
              }],
-               selected: 1
+               selected: 3
            },
 
 
