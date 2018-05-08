@@ -1,3 +1,4 @@
+
 <style>
 
 /* Reset Styles */
@@ -37,6 +38,7 @@ content: " "; /* 1 */
 
 
 body  {
+
   font-family: Lato, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 160%;
@@ -96,7 +98,7 @@ nav {
 }
 
 .branding {
-  float: left;
+    float: left;
   margin: 20px;
 }
 
@@ -151,9 +153,11 @@ nav li a:hover {
 </style>
 
 
-<div class="branding"><a ng-href="#/">Stock Details</a></div>
-<div>
+
 <ul>
+  <div class="branding"><a ng-href="#/">Stock Details</a></div>
+  <div>
+
 	<li ng-show="user.first"><a ng-href="#login" ng-click="signout(user)">Sign Out</a></li>
 	<li ng-show="user.first"><a ng-href="" >Welcome : {{ user.first }}!</a></li>
-</ul>
+</ul></div>
