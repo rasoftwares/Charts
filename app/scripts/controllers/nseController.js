@@ -5,70 +5,41 @@
  $scope.values = ['1.5','2','2.5','3','3.5','4','4.5','5'];
  $scope.selectedNumber = $scope.values[0];
  $scope.nseStocks = nsestock.stockdetails;
- var Url ="https://stocks-3dbe3.firebaseio.com/users/wDI3FssWkwOuLNYE05rv3fBRpp92/bt.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
- //var Url ="https://stocks-3dbe3.firebaseio.com/users/" + firebaseUser.uid+ "/bt.json?auth=9gDeqqQCfu4iZ2ZKQtvAt3ZSdDlXZmRful3R17Jm";
+
+/*bt detoils*/
+
+// var btUrl="app/scripts/data/nse/trend/bt.json";
+ var otUrl="app/scripts/data/nse/trend/ot.json";
+ var stUrl="app/scripts/data/nse/trend/st.json";
+
+/* $http.get(btUrl).
+   success(function(data, status, headers, config) {
+     $scope.btList = data;
+     console.log($scope.btList);
+   }).
+   error(function(data, status, headers, config) {
+     // log error
+   });*/
 
 
-    $.get(Url, function (data) {
 
-    $scope.nseStockdata = data;
-    $scope.itemsPerPage = 10;
-    $scope.currentPage = 0;
-  //   $scope.items =$scope.nseStockdata;
-     $scope.items =  $scope.nseStockdata;
-     console.log($scope.items);
-     $scope.range = function() {
-      var rangeSize = 1;
-      var ret = [];
-      var start;
+$http.get(otUrl).
+  success(function(data, status, headers, config) {
+    $scope.otList = data;
+    console.log($scope.otList);
+  }).
+  error(function(data, status, headers, config) {
+    // log error
+  });
 
-      start = $scope.currentPage;
-      if ( start > $scope.pageCount()-rangeSize ) {
-        start = $scope.pageCount()-rangeSize+1;
-      }
-
-      for (var i=start; i<start+rangeSize; i++) {
-        ret.push(i);
-      }
-      return ret;
-     };
-
-    $scope.prevPage = function() {
-      if ($scope.currentPage > 0) {
-        $scope.currentPage--;
-      }
-    };
-
-    $scope.prevPageDisabled = function() {
-      return $scope.currentPage === 0 ? "disabled" : "";
-    };
-
-    $scope.pageCount = function() {
-      return Math.ceil($scope.items.length/$scope.itemsPerPage)-1;
-    };
-
-    $scope.nextPage = function() {
-      if ($scope.currentPage < $scope.pageCount()) {
-        $scope.currentPage++;
-      }
-    };
-
-    $scope.nextPageDisabled = function() {
-      return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
-    };
-
-    $scope.setPage = function(n) {
-      $scope.currentPage = n;
-    };/*end of pagination*/
-
-    //console.log($scope.Stocks);
-});
-  //   console.log(data);
-    // $scope.Stocks = data;
-    console.log($scope.nseStockdata);
-
- //$scope.table;
-  /*start pagination
+  $http.get(stUrl).
+    success(function(data, status, headers, config) {
+      $scope.stList = data;
+      console.log($scope.stList);
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
 
 
 
@@ -722,7 +693,7 @@ $(window).resize();
          {
                type: 'candlestick',
                name: 'CANDLESTICK',
-               data: dataC,
+               data:dataC,
                dataGrouping: {
              units: groupingUnits
                }

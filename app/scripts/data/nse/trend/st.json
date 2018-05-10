@@ -1,0 +1,554 @@
+[
+ {
+   "code": "UJJIVAN",
+   "trend": "ST"
+ },
+ {
+   "code": "EICHERMOT",
+   "trend": "ST"
+ },
+ {
+   "code": "PNB",
+   "trend": "ST"
+ },
+ {
+   "code": "TATACHEM",
+   "trend": "ST"
+ },
+ {
+   "code": "HINDUNILVR",
+   "trend": "ST"
+ },
+ {
+   "code": "NHPC",
+   "trend": "ST"
+ },
+ {
+   "code": "TV18BRDCST",
+   "trend": "ST"
+ },
+ {
+   "code": "PFC",
+   "trend": "ST"
+ },
+ {
+   "code": "TATAMOTORS",
+   "trend": "ST"
+ },
+ {
+   "code": "INDUSINDBK",
+   "trend": "ST"
+ },
+ {
+   "code": "CONCOR",
+   "trend": "ST"
+ },
+ {
+   "code": "SUNTV",
+   "trend": "ST"
+ },
+ {
+   "code": "AMARAJABAT",
+   "trend": "ST"
+ },
+ {
+   "code": "LUPIN",
+   "trend": "ST"
+ },
+ {
+   "code": "SUNPHARMA",
+   "trend": "ST"
+ },
+ {
+   "code": "NTPC",
+   "trend": "ST"
+ },
+ {
+   "code": "SYNDIBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "ASHOKLEY",
+   "trend": "ST"
+ },
+ {
+   "code": "NIITTECH",
+   "trend": "ST"
+ },
+ {
+   "code": "BPCL",
+   "trend": "ST"
+ },
+ {
+   "code": "RELCAPITAL",
+   "trend": "ST"
+ },
+ {
+   "code": "ICICIPRULI",
+   "trend": "ST"
+ },
+ {
+   "code": "JINDALSTEL",
+   "trend": "ST"
+ },
+ {
+   "code": "POWERGRID",
+   "trend": "ST"
+ },
+ {
+   "code": "CESC",
+   "trend": "ST"
+ },
+ {
+   "code": "INDIGO",
+   "trend": "ST"
+ },
+ {
+   "code": "TITAN",
+   "trend": "ST"
+ },
+ {
+   "code": "KTKBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "PAGEIND",
+   "trend": "ST"
+ },
+ {
+   "code": "CANBK",
+   "trend": "ST"
+ },
+ {
+   "code": "IRB",
+   "trend": "ST"
+ },
+ {
+   "code": "BAJFINANCE",
+   "trend": "ST"
+ },
+ {
+   "code": "ZEEL",
+   "trend": "ST"
+ },
+ {
+   "code": "HINDALCO",
+   "trend": "ST"
+ },
+ {
+   "code": "RELIANCE",
+   "trend": "ST"
+ },
+ {
+   "code": "HDIL",
+   "trend": "ST"
+ },
+ {
+   "code": "CASTROLIND",
+   "trend": "ST"
+ },
+ {
+   "code": "VGUARD",
+   "trend": "ST"
+ },
+ {
+   "code": "ICICIBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "DRREDDY",
+   "trend": "ST"
+ },
+ {
+   "code": "NATIONALUM",
+   "trend": "ST"
+ },
+ {
+   "code": "TATAELXSI",
+   "trend": "ST"
+ },
+ {
+   "code": "CIPLA",
+   "trend": "ST"
+ },
+ {
+   "code": "GRANULES",
+   "trend": "ST"
+ },
+ {
+   "code": "EQUITAS",
+   "trend": "ST"
+ },
+ {
+   "code": "DIVISLAB",
+   "trend": "ST"
+ },
+ {
+   "code": "TATAMTRDVR",
+   "trend": "ST"
+ },
+ {
+   "code": "COALINDIA",
+   "trend": "ST"
+ },
+ {
+   "code": "RAYMOND",
+   "trend": "ST"
+ },
+ {
+   "code": "BHARATFIN",
+   "trend": "ST"
+ },
+ {
+   "code": "GAIL",
+   "trend": "ST"
+ },
+ {
+   "code": "UNIONBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "VEDL",
+   "trend": "ST"
+ },
+ {
+   "code": "ACC",
+   "trend": "ST"
+ },
+ {
+   "code": "IFCI",
+   "trend": "ST"
+ },
+ {
+   "code": "DCBBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "GODREJCP",
+   "trend": "ST"
+ },
+ {
+   "code": "BEL",
+   "trend": "ST"
+ },
+ {
+   "code": "MARICO",
+   "trend": "ST"
+ },
+ {
+   "code": "DHFL",
+   "trend": "ST"
+ },
+ {
+   "code": "BERGEPAINT",
+   "trend": "ST"
+ },
+ {
+   "code": "BHEL",
+   "trend": "ST"
+ },
+ {
+   "code": "KPIT",
+   "trend": "ST"
+ },
+ {
+   "code": "STAR",
+   "trend": "ST"
+ },
+ {
+   "code": "BALKRISIND",
+   "trend": "ST"
+ },
+ {
+   "code": "SRTRANSFIN",
+   "trend": "ST"
+ },
+ {
+   "code": "IBULHSGFIN",
+   "trend": "ST"
+ },
+ {
+   "code": "IDBI",
+   "trend": "ST"
+ },
+ {
+   "code": "TATASTEEL",
+   "trend": "ST"
+ },
+ {
+   "code": "MCX",
+   "trend": "ST"
+ },
+ {
+   "code": "BRITANNIA",
+   "trend": "ST"
+ },
+ {
+   "code": "GSFC",
+   "trend": "ST"
+ },
+ {
+   "code": "LT",
+   "trend": "ST"
+ },
+ {
+   "code": "GRASIM",
+   "trend": "ST"
+ },
+ {
+   "code": "PCJEWELLER",
+   "trend": "ST"
+ },
+ {
+   "code": "MINDTREE",
+   "trend": "ST"
+ },
+ {
+   "code": "SHREECEM",
+   "trend": "ST"
+ },
+ {
+   "code": "MARUTI",
+   "trend": "ST"
+ },
+ {
+   "code": "BALRAMCHIN",
+   "trend": "ST"
+ },
+ {
+   "code": "RECLTD",
+   "trend": "ST"
+ },
+ {
+   "code": "WIPRO",
+   "trend": "ST"
+ },
+ {
+   "code": "HDFC",
+   "trend": "ST"
+ },
+ {
+   "code": "ADANIPORTS",
+   "trend": "ST"
+ },
+ {
+   "code": "INFY",
+   "trend": "ST"
+ },
+ {
+   "code": "BAJAJFINSV",
+   "trend": "ST"
+ },
+ {
+   "code": "ENGINERSIN",
+   "trend": "ST"
+ },
+ {
+   "code": "INFIBEAM",
+   "trend": "ST"
+ },
+ {
+   "code": "AJANTPHARM",
+   "trend": "ST"
+ },
+ {
+   "code": "DISHTV",
+   "trend": "ST"
+ },
+ {
+   "code": "TORNTPOWER",
+   "trend": "ST"
+ },
+ {
+   "code": "ALBK",
+   "trend": "ST"
+ },
+ {
+   "code": "INDIANB",
+   "trend": "ST"
+ },
+ {
+   "code": "RPOWER",
+   "trend": "ST"
+ },
+ {
+   "code": "MCDOWELL-N",
+   "trend": "ST"
+ },
+ {
+   "code": "BIOCON",
+   "trend": "ST"
+ },
+ {
+   "code": "OIL",
+   "trend": "ST"
+ },
+ {
+   "code": "WOCKPHARMA",
+   "trend": "ST"
+ },
+ {
+   "code": "JETAIRWAYS",
+   "trend": "ST"
+ },
+ {
+   "code": "TECHM",
+   "trend": "ST"
+ },
+ {
+   "code": "CANFINHOME",
+   "trend": "ST"
+ },
+ {
+   "code": "PTC",
+   "trend": "ST"
+ },
+ {
+   "code": "DLF",
+   "trend": "ST"
+ },
+ {
+   "code": "TCS",
+   "trend": "ST"
+ },
+ {
+   "code": "AMBUJACEM",
+   "trend": "ST"
+ },
+ {
+   "code": "CHOLAFIN",
+   "trend": "ST"
+ },
+ {
+   "code": "APOLLOTYRE",
+   "trend": "ST"
+ },
+ {
+   "code": "CAPF",
+   "trend": "ST"
+ },
+ {
+   "code": "HDFCBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "IDFCBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "JUBLFOOD",
+   "trend": "ST"
+ },
+ {
+   "code": "AXISBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "VOLTAS",
+   "trend": "ST"
+ },
+ {
+   "code": "RELINFRA",
+   "trend": "ST"
+ },
+ {
+   "code": "MUTHOOTFIN",
+   "trend": "ST"
+ },
+ {
+   "code": "JSWSTEEL",
+   "trend": "ST"
+ },
+ {
+   "code": "M&MFIN",
+   "trend": "ST"
+ },
+ {
+   "code": "SAIL",
+   "trend": "ST"
+ },
+ {
+   "code": "ASIANPAINT",
+   "trend": "ST"
+ },
+ {
+   "code": "BATAINDIA",
+   "trend": "ST"
+ },
+ {
+   "code": "ULTRACEMCO",
+   "trend": "ST"
+ },
+ {
+   "code": "ADANIENT",
+   "trend": "ST"
+ },
+ {
+   "code": "BOSCHLTD",
+   "trend": "ST"
+ },
+ {
+   "code": "GLENMARK",
+   "trend": "ST"
+ },
+ {
+   "code": "HAVELLS",
+   "trend": "ST"
+ },
+ {
+   "code": "JPASSOCIAT",
+   "trend": "ST"
+ },
+ {
+   "code": "KOTAKBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "PETRONET",
+   "trend": "ST"
+ },
+ {
+   "code": "LICHSGFIN",
+   "trend": "ST"
+ },
+ {
+   "code": "IGL",
+   "trend": "ST"
+ },
+ {
+   "code": "TATAGLOBAL",
+   "trend": "ST"
+ },
+ {
+   "code": "ESCORTS",
+   "trend": "ST"
+ },
+ {
+   "code": "KSCL",
+   "trend": "ST"
+ },
+ {
+   "code": "MGL",
+   "trend": "ST"
+ },
+ {
+   "code": "RBLBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "M&M",
+   "trend": "ST"
+ },
+ {
+   "code": "APOLLOHOSP",
+   "trend": "ST"
+ },
+ {
+   "code": "YESBANK",
+   "trend": "ST"
+ },
+ {
+   "code": "JISLJALEQS",
+   "trend": "ST"
+ }
+]

@@ -364,22 +364,25 @@ a.close:hover {
                     </div>
                    </table>
                </div>
-    <h3>BT/ST Details</h3>
+    <h3>BT/ST/OT Details</h3>
         <div>
                <table class="table table-striped table-bordered" id="table" >
                  <div class="container-fluid typeahead-demo">
                   <center><h4> Watch List</h4></center>
                   <thead>
                  <tr>
-                 <th>BT</th>
+                 <!--th>BT</th-->
                  <th>ST</th>
+                 <th>OT</th>
                </tr></thead>
-               <tbody>
-                  <tr ng-repeat="item in items | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
-                  <td bgcolor="{{item.color}}" ><a style="color:black;font-size:12px;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
-                  <td bgcolor="{{item.color}}"><a style="color:black;font-size:12px;" href="" ng-click="prepareChart(item.code)">{{item.name}}</a></td>
-                  </tr></tbody>
-               <tfoot>
+               <tbody ng-repeat="item in otList">
+                <tr ng-repeat="stock in stList">
+                  <!--td bgcolor="{{stock.color}}"><a style="color:black;font-size:12px;" href="" ng-click="prepareChart( btList[$index].code)">{{ btList[$index].code }}</td-->
+                  <td bgcolor="{{stock.color}}"><a style="color:black;font-size:12px;" href="" ng-click="prepareChart( stList[$index].code)">{{ stList[$index].code }}</td>
+                  <td bgcolor="{{stock.color}}"><a style="color:black;font-size:12px;" href="" ng-click="prepareChart( otList[$index].code)">{{ otList[$index].code }}</td>
+             </tr>
+                  </tbody>
+               <!--tfoot>
             <td colspan="3">
               <div class="pagination">
                 <ul>
@@ -395,9 +398,9 @@ a.close:hover {
                 </ul>
               </div>
             </td>
-          </tfoot>
+          </tfoot-->
                 </div>
-               </table>
+
            </div>
 
 
