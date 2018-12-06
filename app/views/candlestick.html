@@ -1,5 +1,3 @@
-<div class="container">
-
   <style>
   .pagination{margin:20px 0;}
 .pagination ul{display:inline-block;*display:inline;*zoom:1;margin-left:0;margin-bottom:0;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);-moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);}
@@ -27,6 +25,39 @@
     height: 435px;
 }
 
+
+
+
+
+
+.highcharts-data-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: white;
+    min-width: 100%;
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 2.0em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    border: 1px solid silver;
+    padding: 0.5em;
+}
+.highcharts-data-table tr:nth-child(even), .highcharts-data-table thead tr {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #eff;
+}
+.highcharts-data-table caption {
+    border-bottom: none;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+
+
+
 .modal-box {
   display: none;
   position: absolute;
@@ -45,6 +76,8 @@
   padding: 1.25em 1.5em;
   border-bottom: 1px solid #ddd;
 }
+
+
 
 .modal-box header h3,
 .modal-box header h4,
@@ -118,71 +151,11 @@ a.close:hover {
 </header>
 <div class="modal-body">
 <div id="demo"></div>
-<!--   <table class="table table-striped table-bordered">
-  <div class="container-fluid typeahead-demo">
-   <center><h4> Watch List</h4></center>
-   <thead>
-  <tr>
-  <th>date</th>
-  <th>open</th>
-  <th>high</th>
-  <th>low</th>
-  <th>close</th>
-  <th>upper</th>
-  <th>lower</th>
-</tr></thead>
-<tbody>
-   <tr ng-repeat="item in stockdata">
-   <td>{{item.x}}</td>
-    <td>{{item.open}}</td>
-      <td>{{item.high}}</td>
-        <td>{{item.low}}</td>
-          <td>{{item.close}}</td>
-          <td>{{item.upper}}</td>
-          <td>{{item.lower}}</td>
-   <td bgcolor="{{item.color}}">{{item.color}}</td>
-   </tr></tbody>
- <tfoot>
-<td colspan="3">
-<div class="pagination">
- <ul>
-   <li ng-class="prevPageDisabled()">
-     <a href ng-click="prevPage()">« Prev</a>
-   </li>
-   <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
-     <a href="">{{n+1}}</a>
-   </li>
-   <li ng-class="nextPageDisabled()">
-     <a href ng-click="nextPage()">Next »</a>
-   </li>
- </ul>
-</div>
-</td>
-</tfoot>
- </div>
-</table>-->
 </div>
 <footer>
 <a href="#/home" class="js-modal-close">Close Button</a>
 </footer>
 </div>
-
-<!---end popup----->
-
-<!--radio button--------->
-<!--  <h4><div>
-           <label><input type="radio" name="colorRadio" value="bse">BSE</label>
-           <label><input type="radio" name="colorRadio" value="nse">NSE</label>
-
-       </div></h4>-->
-
-<h4><div>
-  <!--  <input type="radio" name="stock" value="4" />FUTURES-->
-      <!--input type="radio" name="stock" checked="checked" value="3" />NSE
-     <!input type="radio" name="stock"  value="1" />BSE-->
-
-    </div></h4>
-<!--end of radio button--------->
 
 <!--bse div--------->
  <div id="Stock1" class="desc"  style="display: none;" ng-controller="candleController">
@@ -220,39 +193,7 @@ a.close:hover {
     <div  id="accordion1">
       <h1>Peer Details</h1>
              <div>
-            <!--  <table class="table table-striped table-bordered" id="table1" >
-                <div class="container-fluid typeahead-demo">
-                 <center><h4> Peers List</h4></center>
-                 <thead>
-                <tr>
-                <th>CODE</th>
-                <th>NAME</th>
-              </tr></thead>
-              <tbody>
-                 <tr ng-repeat="item in items | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
-                 <td bgcolor="{{item.color}}">{{item.symbol}}</a></td>
-                 <td bgcolor="{{item.color}}">{{item.name}}</a></td>
-                 </tr></tbody>
-              <tfoot>
-           <td colspan="3">
-             <div class="pagination">
-               <ul>
-                 <li ng-class="prevPageDisabled()">
-                   <a href ng-click="prevPage()">« Prev</a>
-                 </li>
-                 <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
-                   <a href="">{{n+1}}</a>
-                 </li>
-                 <li ng-class="nextPageDisabled()">
-                   <a href ng-click="nextPage()">Next »</a>
-                 </li>
-               </ul>
-             </div>
-           </td>
-         </tfoot>
-               </div>
-             </table>-->
-          </div>
+              </div>
 
           <h1>BT/ST Details</h1>
                <div>
@@ -299,7 +240,7 @@ a.close:hover {
  <!--end bse div--------->
 
   <!--nse div--------->
- <div id="Stock3" class="desc" ng-controller="nseController">
+ <div ng-controller="nseController">
   <div class="modal-body row">
     <div class="col-md-8">
       <div class="container-fluid typeahead-demo">
@@ -312,20 +253,171 @@ a.close:hover {
       <a    ng-click="createTable(Stock_Code)" >{{Stock_Code}}</a>
     </div>-->
      <!-- <h4><select ng-model='selectedNumber'  ng-options='value for value in values'></select></h4>-->
-   <h4> <a class="js-open-modal" href="#" data-modal-id="popup" style="color:green;" data-toggle="tooltip" title="Click to Table View">{{stockid}}</a></h4>
+
+   <h4>{{stockid}}</h4> <!--a class="js-open-modal" href="#" data-modal-id="popup" style="color:green;" data-toggle="tooltip" title="Click to Table View">{{stockid}}</a></h4-->
    <!-- <a  href="#/table"  data-toggle="tooltip" ng-click="createTable(stockid)" title="Click to Table View">{{stockid}}</a>-->
 
-      <div class="chart-outer" id="container2" style="height: 400px; min-width: 310px">
-        <div id="container4" style="height: 400px; min-width: 310px"></div>
 
-     </div>
-     <div class="chart-outer"id="container3" style="height: 400px; min-width: 310px">
-       <h3>Future Chart</h3>
-       <div id="container5" style="height: 400px; min-width: 310px"></div>
-    </div><br>
-   </div>
-   <div>
+     <!--div class="chart-outer"id="container3" style="height: 400px; min-width: 310px">
+     </div> <br-->
+
+
+  <div id="tabs">
+    <ul>
+      <li class="active"><a href="#tabs-1" id="EXP1" title={{stockid}}:{{title1}}>EXP1</a></li>
+      <li class="active"><a href="#tabs-2" id="EXP2" title={{stockid}}:{{title2}}>EXP2</a></li>
+      <li class="active"><a href="#tabs-3" id="EXP3" title={{stockid}}:{{title3}}>EXP3</a></li>
+    </ul>
+    <div id="tabs-1">
+      <div id="tabs3">
+        <ul>
+          <li><a href="#tabs3-1" >1Min</a></li>
+          <li><a href="#tabs3-2" >3Min</a></li>
+          <li><a href="#tabs3-3" >5Min</a></li>
+          <li><a href="#tabs3-4" >10Min</a></li>
+          <li><a href="#tabs3-5" >15Min</a></li>
+          <li><a href="#tabs3-6" >30Min</a></li>
+          <li><a href="#tabs3-7" >60Min</a></li>
+          <li><a href="#tabs3-8" >120Min</a></li>
+          </ul>
+          <div id="tabs3-1">
+            <div class="chart-outer" id="container1" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs3-2">
+            <div class="chart-outer" id="container2" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs3-3">
+            <div class="chart-outer" id="container3" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs3-4">
+            <div class="chart-outer" id="container4" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs3-5">
+            <div class="chart-outer" id="container5" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs3-6">
+            <div class="chart-outer" id="container6" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs3-7">
+            <div class="chart-outer" id="container7" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs3-8">
+            <div class="chart-outer" id="container8" style="height: 400px; min-width: 310px"></div>
+          </div>
     </div>
+    </div>
+
+    <div id="tabs-2">
+
+
+      <div id="tabs4">
+        <ul>
+          <li><a href="#tabs4-1" >1Min</a></li>
+          <li><a href="#tabs4-2" >3Min</a></li>
+          <li><a href="#tabs4-3" >5Min</a></li>
+          <li><a href="#tabs4-4" >10Min</a></li>
+          <li><a href="#tabs4-5" >15Min</a></li>
+          <li><a href="#tabs4-6" >30Min</a></li>
+          <li><a href="#tabs4-7" >60Min</a></li>
+          <li><a href="#tabs4-8" >120Min</a></li>
+          </ul>
+          <div id="tabs4-1">
+            <div class="chart-outer" id="container9" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs4-2">
+            <div class="chart-outer" id="container10" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs4-3">
+            <div class="chart-outer" id="container11" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs4-4">
+            <div class="chart-outer" id="container12" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs4-5">
+            <div class="chart-outer" id="container13" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs4-6">
+            <div class="chart-outer" id="container14" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs4-7">
+            <div class="chart-outer" id="container15" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs4-8">
+            <div class="chart-outer" id="container16" style="height: 400px; min-width: 310px"></div>
+          </div>
+
+    </div>
+
+
+
+    </div>
+
+
+    <div id="tabs-3">
+
+
+
+      <div id="tabs5">
+        <ul>
+          <li><a href="#tabs5-1" >1Min</a></li>
+          <li><a href="#tabs5-2" >3Min</a></li>
+          <li><a href="#tabs5-3" >5Min</a></li>
+          <li><a href="#tabs5-4" >10Min</a></li>
+          <li><a href="#tabs5-5" >15Min</a></li>
+          <li><a href="#tabs5-6" >30Min</a></li>
+          <li><a href="#tabs5-7" >60Min</a></li>
+          <li><a href="#tabs5-8" >120Min</a></li>
+          </ul>
+          <div id="tabs5-1">
+            <div class="chart-outer" id="container17" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs5-2">
+            <div class="chart-outer" id="container18" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs5-3">
+            <div class="chart-outer" id="container19" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs5-4">
+            <div class="chart-outer" id="container20" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs5-5">
+            <div class="chart-outer" id="container21" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs5-6">
+            <div class="chart-outer" id="container22" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs5-7">
+            <div class="chart-outer" id="container23" style="height: 400px; min-width: 310px"></div>
+          </div>
+          <div id="tabs5-8">
+            <div class="chart-outer" id="container24" style="height: 400px; min-width: 310px"></div>
+          </div>
+
+  </div>
+    </div>
+
+
+  </div><br>
+
+
+
+     <!--div id="tabs1">
+       <ul>
+         <li><a href="#tabs1-1">EQUAITY</a></li>
+         </ul>
+           <div id="tabs1-1">
+    <div class="chart-outer" id="container2" style="height: 400px; min-width: 310px">
+
+    </div></div>
+   </div><br-->
+
+
+
+
+
+
+</div>
+
   </div><!--col8-->
 
     <div class="col-md-4">
@@ -449,15 +541,40 @@ $( "#accordion1").accordion({
    });
 
 
-$(document).ready(function() {
-$("input[name$='stock']").click(function() {
-  var test = $(this).val();
-    $("div.desc").hide();
-   $("#Stock" + test).show();
-    });
-});
 
 
-//$( "#hide*" ).click(function () {$( "#container4" ).hide();});
-//$( "#hide*" ).click(function () {$( "#container5" ).hide();});
+
+
+$( function() {
+   $( "#tabs" ).tabs({ active: 0});
+ } );
+
+
+$( function() {
+    $( "#tabs1" ).tabs();
+  } );
+
+$( function() {
+     $( "#tabs3" ).tabs();
+   } );
+
+$( function() {
+      $( "#tabs4" ).tabs();
+    } );
+$( function() {
+       $( "#tabs5" ).tabs();
+     } );
+
+     $( function() {
+        $(tabs).tooltip();
+      } );
+
+
+
 </script>
+<style>
+label {
+  display: inline-block;
+  width: 5em;
+}
+</style>
