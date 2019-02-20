@@ -4,12 +4,14 @@ app.controller('nseController', function($scope, $http, $filter, $window, ) {
     $scope.values = ['1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
     $scope.selectedNumber = $scope.values[0];
     $scope.nseStocks = nsestock.stockdetails;
-    $scope.title1 = "27-12-2018";
-    $scope.title2 = "31-01-2019";
-    $scope.title3 = "28-02-2019";
+    $scope.title1 = "28-02-2019";
+    $scope.title2 = "28-03-2019";
+    $scope.title3 = "25-04-2019";
 
 
 
+
+    
 
     /*bt detoils*/
 

@@ -1,5 +1,5 @@
   <style>
-  .pagination{margin:20px 0;}
+.pagination{margin:20px 0;}
 .pagination ul{display:inline-block;*display:inline;*zoom:1;margin-left:0;margin-bottom:0;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);-moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);box-shadow:0 1px 2px rgba(0, 0, 0, 0.05);}
 .pagination ul>li{display:inline;}
 .pagination ul>li>a,.pagination ul>li>span{float:left;padding:4px 12px;line-height:20px;text-decoration:none;background-color:#ffffff;border:1px solid #dddddd;border-left-width:0;}
@@ -21,12 +21,19 @@
 
 /* accordion editing */
 
-#accordion .ui-accordion-content {
-    height: 435px;
+
+
+
+.highcharts-candlestick-series .highcharts-point {
+    stroke: $neutral-color-100;
+    stroke-width: 1px;
 }
-
-
-
+.highcharts-candlestick-series .highcharts-point-up {
+    fill: $background-color;
+}
+.highcharts-ohlc-series .highcharts-point-hover {
+    stroke-width: 3px;
+}
 
 
 
@@ -525,9 +532,9 @@ $(document).ready(function(){
 
 
 $( function() {
-    $( "#accordion" ).accordion({  collapsible: true,
+    $( "#accordion" ).accordion(
 
-      });
+    {heightStyle: "fill-content"});
 
   } );
 
@@ -537,7 +544,9 @@ $( function() {
 $( "#accordion1").accordion({
   heightStyle: "fill-content",
   collapsible: true,
-      active: true
+      active: true,
+      autoHeight: "false"
+
    });
 
 
