@@ -1,0 +1,634 @@
+
+
+
+
+   var Url1 ="app/scripts/data/nse/" + "ACC" +".json";
+  // var FuUrl1="app/scripts/data/nse/futures/" + "ACC" +"_fu.json";
+   var PUrl1 ="app/scripts/data/nse/peers/" + "ACC" +".json";
+   var Exp1Url="app/scripts/data/nse/futures/ACC/exp1.json";
+   var Exp2Url="app/scripts/data/nse/futures/ACC/exp2.json";
+   var Exp3Url="app/scripts/data/nse/futures/ACC/exp3.json";
+
+
+  $.getJSON(Url1, function (data) {
+
+
+   $scope.stockdata=data;
+   console.log( $scope.stockdata);
+
+
+
+  /* var dataF = new Array();
+   $.map(data, function(obj, i) {
+   dataF.push([obj.fudate, parseInt(obj.trs)]);
+   });
+   console.log(dataF);*/
+
+
+    var datap = new Array();
+    $.map(data, function(obj, i) {
+    datap.push([obj.x, parseInt(obj.upper)]);
+    });
+  //  console.log(datap);
+
+    var dataL = new Array();
+    $.map(data, function(obj, i) {
+    //  console.log(data);
+    dataL.push([obj.x, parseInt(obj.lower)]);
+    });
+  //  console.log(dataL);
+
+     /*data point for candlestick*/
+     var candleData = new Array();
+      $.map(data, function(obj, i) {
+    //  console.log(candleData);
+      candleData.push([obj.x, parseInt(obj.open),parseInt(obj.high),parseInt(obj.low),parseInt(obj.close),(obj.color)]);
+      });
+    //  console.log(candleData);
+
+
+     dataC = Highcharts.map(candleData, function (config) {
+    // console.log(data);
+         return {
+             x: config[0],//date
+             open: config[1],//open
+             high: config[2],//high
+             low: config[3],//low
+             close: config[4],//close
+             color: config[5]//color
+           };
+     });
+    console.log(dataC);
+
+     var groupingUnits = [[
+       'week',                         // unit name
+       [1]                             // allowed multiples
+     ], [
+       'month',
+       [1, 2, 3, 4, 6]
+     ]];
+
+     // create the chart
+     var chart = Highcharts.stockChart('container2', {
+        /*selection box*/
+        tooltip: {
+   shared:true
+},
+
+        rangeSelector: {
+           inputEnabled:false,
+             buttons: [
+               {
+                 type: 'minute',
+                 count: 15,
+                 text: '15M'
+               },
+             {
+               type: 'day',
+               count: 1,
+               text: '1D'
+            },
+
+             {
+                 type: 'all',
+                 count: 1,
+                 text: 'All'
+             }],
+               selected: 1
+           },
+
+
+           title: {
+               text: 'ACC',
+                 align: 'left',
+               style: {
+           color: 'green',
+           fontWeight: 'bold'
+       }
+           },
+                legend: {
+                        enabled: true
+                    },
+
+           yAxis: [{
+               title: {
+                   text: 'OHLC'
+               },
+               height: 200,
+               lineWidth: 2
+           }
+
+            /*{
+               title: {
+                   text: 'Volume'
+               },
+               top: 300,
+               height: 100,
+               offset: 0,
+               lineWidth: 2
+           }*/],
+
+      /*charts**/
+           series: [{
+
+
+               type: 'spline',
+               name: 'UpperValue', // closing value -5% up value
+               data: datap,
+               dataGrouping: {
+             units: groupingUnits
+               }
+           },
+         {
+               type: 'candlestick',
+               name: 'CANDLESTICK',
+               data:dataC,
+               dataGrouping: {
+             units: groupingUnits
+               }
+           }, {
+             type: 'line',
+             name: "LowValue",// opening value +5% value value
+             data: dataL,
+             dataGrouping: {
+               units: groupingUnits
+             }
+
+
+          /* },
+           {
+             type: 'area',
+             name: 'AREA',
+             data: data,
+             dataGrouping: {
+               units: groupingUnits
+             }
+
+                /*   {
+               type: 'column',
+               name: 'Volume',
+               data: volume,
+               yAxis: 1,
+               dataGrouping: {
+             units: groupingUnits
+           }*/
+
+         }]
+
+ } ,
+ function (chart) {
+
+            // apply the date pickers
+            setTimeout(function () {
+                $('input.highcharts-range-selector').datepicker();
+            }, 0);
+        });
+
+ });
+
+
+
+   $http.get(PUrl1).
+     success(function(data, status, headers, config) {
+       $scope.peersdata = data;
+       console.log($scope.peersdata);
+     }).
+     error(function(data, status, headers, config) {
+       // log error
+     });
+
+/*   $.getJSON(PUrl1, function (data) {
+     console.log(data);
+      $scope.peersdata=data;
+});*/
+
+
+
+$.getJSON(Exp1Url, function (data) {
+
+
+ $scope.stockdata=data;
+ console.log( $scope.stockdata);
+
+
+/* var dataF = new Array();
+ $.map(data, function(obj, i) {
+ dataF.push([obj.fudate, parseInt(obj.trs)]);
+ });
+ console.log(dataF);*/
+
+
+ var candleData = new Array();
+  $.map(data, function(obj, i) {
+//  console.log(candleData);
+  candleData.push([obj.x, parseInt(obj.open),parseInt(obj.high),parseInt(obj.low),parseInt(obj.close),(obj.color)]);
+  });
+
+
+
+ dataC = Highcharts.map(candleData, function (config) {
+// console.log(data);
+     return {
+         x: config[0],//date
+         open: config[1],//open
+         high: config[2],//high
+         low: config[3],//low
+         close: config[4],//close
+         color: config[5]//color
+       };
+ });
+console.log(dataC);
+
+
+
+ var groupingUnits = [[
+   'week',                         // unit name
+   [1]                             // allowed multiples
+ ], [
+   'month',
+   [1, 2, 3, 4, 6]
+ ]];
+
+ // create the chart
+ var chart = Highcharts.stockChart('container7', {
+    /*selection box*/
+    tooltip: {
+shared:true
+},
+
+    rangeSelector: {
+       inputEnabled:false,
+         buttons: [
+           {
+             type: 'minute',
+             count: 15,
+             text: '15M'
+           },
+           {
+               type: 'day',
+               count: 1,
+               text: '1D'
+           },
+           {
+             type: 'week',
+             count: 1,
+             text: '1W'
+         },
+         {
+             type: 'month',
+             count: 1,
+             text: '1M'
+         },
+         {
+             type: 'year',
+             count: 1,
+             text: '1Y'
+         },
+
+         {
+             type: 'all',
+             count: 1,
+             text: 'All'
+         }],
+           selected: 1
+       },
+
+
+       /*title: {
+           text: 'STOCK PRICE'
+       },*/
+            legend: {
+                    enabled: true
+                },
+
+       yAxis: [{
+           title: {
+               text: 'OHLC'
+           },
+           height: 200,
+           lineWidth: 2
+       }
+
+        /*{
+           title: {
+               text: 'Volume'
+           },
+           top: 300,
+           height: 100,
+           offset: 0,
+           lineWidth: 2
+       }*/],
+
+  /*charts**/
+       series: [
+     {
+         type: 'candlestick',
+         name: "EXP1",// opening value +5% value value
+         data: dataC,
+         dataGrouping: {
+           units: groupingUnits
+         }
+
+
+     }]
+
+} ,
+function (chart) {
+
+        // apply the date pickers
+        setTimeout(function () {
+            $('input.highcharts-range-selector').datepicker();
+        }, 0);
+    });
+
+
+
+  });
+
+
+  /*------exp2--*/
+
+  $.getJSON(Exp2Url, function (data) {
+
+
+   $scope.stockdata=data;
+   console.log( $scope.stockdata);
+
+
+  /* var dataF = new Array();
+   $.map(data, function(obj, i) {
+   dataF.push([obj.fudate, parseInt(obj.trs)]);
+   });
+   console.log(dataF);*/
+
+
+   var candleData = new Array();
+    $.map(data, function(obj, i) {
+  //  console.log(candleData);
+    candleData.push([obj.x, parseInt(obj.open),parseInt(obj.high),parseInt(obj.low),parseInt(obj.close),(obj.color)]);
+    });
+
+
+
+   dataC = Highcharts.map(candleData, function (config) {
+  // console.log(data);
+       return {
+           x: config[0],//date
+           open: config[1],//open
+           high: config[2],//high
+           low: config[3],//low
+           close: config[4],//close
+           color: config[5]//color
+         };
+   });
+  console.log(dataC);
+
+
+
+   var groupingUnits = [[
+     'week',                         // unit name
+     [1]                             // allowed multiples
+   ], [
+     'month',
+     [1, 2, 3, 4, 6]
+   ]];
+
+   // create the chart
+   var chart = Highcharts.stockChart('container8', {   //static exp2 url
+      /*selection box*/
+      tooltip: {
+  shared:true
+  },
+
+      rangeSelector: {
+         inputEnabled:false,
+           buttons: [
+             {
+               type: 'minute',
+               count: 15,
+               text: '15M'
+             },
+             {
+                 type: 'day',
+                 count: 1,
+                 text: '1D'
+             },
+             {
+               type: 'week',
+               count: 1,
+               text: '1W'
+           },
+           {
+               type: 'month',
+               count: 1,
+               text: '1M'
+           },
+           {
+               type: 'year',
+               count: 1,
+               text: '1Y'
+           },
+
+           {
+               type: 'all',
+               count: 1,
+               text: 'All'
+           }],
+             selected: 1
+         },
+
+
+         /*title: {
+             text: 'STOCK PRICE'
+         },*/
+              legend: {
+                      enabled: true
+                  },
+
+         yAxis: [{
+             title: {
+                 text: 'OHLC'
+             },
+             height: 200,
+             lineWidth: 2
+         }
+
+          /*{
+             title: {
+                 text: 'Volume'
+             },
+             top: 300,
+             height: 100,
+             offset: 0,
+             lineWidth: 2
+         }*/],
+
+    /*charts**/
+         series: [
+       {
+           type: 'candlestick',
+           name: "EXP2",// opening value +5% value value
+           data: dataC,
+           dataGrouping: {
+             units: groupingUnits
+           }
+
+
+       }]
+
+  } ,
+  function (chart) {
+
+          // apply the date pickers
+          setTimeout(function () {
+              $('input.highcharts-range-selector').datepicker();
+          }, 0);
+      });
+
+
+
+    });
+
+
+/*----------exp3------*/
+
+$.getJSON(Exp3Url, function (data) {
+
+
+ $scope.stockdata=data;
+ console.log( $scope.stockdata);
+
+
+/* var dataF = new Array();
+ $.map(data, function(obj, i) {
+ dataF.push([obj.fudate, parseInt(obj.trs)]);
+ });
+ console.log(dataF);*/
+
+
+ var candleData = new Array();
+  $.map(data, function(obj, i) {
+//  console.log(candleData);
+  candleData.push([obj.x, parseInt(obj.open),parseInt(obj.high),parseInt(obj.low),parseInt(obj.close),(obj.color)]);
+  });
+
+
+
+ dataC = Highcharts.map(candleData, function (config) {
+// console.log(data);
+     return {
+         x: config[0],//date
+         open: config[1],//open
+         high: config[2],//high
+         low: config[3],//low
+         close: config[4],//close
+         color: config[5]//color
+       };
+ });
+console.log(dataC);
+
+
+
+ var groupingUnits = [[
+   'week',                         // unit name
+   [1]                             // allowed multiples
+ ], [
+   'month',
+   [1, 2, 3, 4, 6]
+ ]];
+
+ // create the chart
+ var chart = Highcharts.stockChart('container9', {   //static exp2 url
+    /*selection box*/
+    tooltip: {
+shared:true
+},
+
+    rangeSelector: {
+       inputEnabled:false,
+         buttons: [
+           {
+             type: 'minute',
+             count: 15,
+             text: '15M'
+           },
+           {
+               type: 'day',
+               count: 1,
+               text: '1D'
+           },
+           {
+             type: 'week',
+             count: 1,
+             text: '1W'
+         },
+         {
+             type: 'month',
+             count: 1,
+             text: '1M'
+         },
+         {
+             type: 'year',
+             count: 1,
+             text: '1Y'
+         },
+
+         {
+             type: 'all',
+             count: 1,
+             text: 'All'
+         }],
+           selected: 1
+       },
+
+
+       /*title: {
+           text: 'STOCK PRICE'
+       },*/
+            legend: {
+                    enabled: true
+                },
+
+       yAxis: [{
+           title: {
+               text: 'OHLC'
+           },
+           height: 200,
+           lineWidth: 2
+       }
+
+        /*{
+           title: {
+               text: 'Volume'
+           },
+           top: 300,
+           height: 100,
+           offset: 0,
+           lineWidth: 2
+       }*/],
+
+  /*charts**/
+       series: [
+     {
+         type: 'candlestick',
+         name: "EXP3",// opening value +5% value value
+         data: dataC,
+         dataGrouping: {
+           units: groupingUnits
+         }
+
+
+     }]
+
+} ,
+function (chart) {
+
+        // apply the date pickers
+        setTimeout(function () {
+            $('input.highcharts-range-selector').datepicker();
+        }, 0);
+    });
+
+
+
+  });
