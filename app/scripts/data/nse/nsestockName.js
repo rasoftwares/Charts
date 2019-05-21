@@ -222,6 +222,16 @@ var nsestock ={
         "updated_on": "15/4/18"
     },
     {
+        "name": "BANKNIFTY",
+        "code": "BANKNIFTY",
+        "expiries": [
+            "26APR2018",
+            "28JUN2018",
+            "31MAY2018"
+        ],
+        "updated_on": "15/4/18"
+    },
+    {
         "name": "BANK OF INDIA",
         "code": "BANKINDIA",
         "expiries": [
@@ -1376,6 +1386,16 @@ var nsestock ={
         "updated_on": "15/4/18"
     },
     {
+        "name": "NIFTY",
+        "code": "NIFTY",
+        "expiries": [
+            "26APR2018",
+            "28JUN2018",
+            "31MAY2018"
+        ],
+        "updated_on": "15/4/18"
+    },
+    {
         "name": "NHPC LTD",
         "code": "NHPC",
         "expiries": [
@@ -2085,5 +2105,6 @@ var nsestock ={
         ],
         "updated_on": "15/4/18"
     }
+
 ]
 };
